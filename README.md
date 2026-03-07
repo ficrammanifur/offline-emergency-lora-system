@@ -1,3 +1,6 @@
+Berikut adalah file `README.md` yang telah diperbaiki dengan mengubah semua diagram ASCII menjadi diagram **Mermaid** yang lebih interaktif dan mudah dipahami, serta dengan peningkatan tata letak agar lebih modern dan informatif.
+
+```markdown
 <div align="center">
 
 # 🌲 FOREST SENTINEL LORA SYSTEM
@@ -18,9 +21,7 @@
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   📑 DAFTAR ISI                                       ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 📑 Daftar Isi
 
 <div align="center">
 
@@ -30,9 +31,7 @@
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   ✨ OVERVIEW                                          ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## ✨ Overview
 
 **Forest Sentinel** adalah sistem monitoring lingkungan mandiri yang dirancang khusus untuk **area hutan terpencil** tanpa akses internet. Sistem ini menggabungkan teknologi **LoRa** untuk komunikasi jarak jauh (hingga 10km) dengan strategi **deep sleep** ultra-hemat daya yang memungkinkan operasi berbulan-bulan hanya dengan baterai.
 
@@ -44,57 +43,39 @@
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   🧠 SYSTEM ARCHITECTURE                              ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 🧠 System Architecture
 
-```ascii
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                         FOREST SENTINEL - SYSTEM ARCHITECTURE                        │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  🌲 FOREST AREA (Remote)                        🏕️ BASE CAMP (Monitoring Post)       │
-│                                                                                       │
-│  ┌──────────────────────┐                       ┌──────────────────────┐            │
-│  │   CLIENT NODE #01    │                       │   MASTER GATEWAY     │            │
-│  │   [ESP32 + Sensors]  │                       │      [ESP32]         │            │
-│  ├──────────────────────┤     ┌──────────┐     ├──────────────────────┤            │
-│  │ • MQ-2 Gas Sensor    │     │   LORA   │     │ • LoRa Receiver       │            │
-│  │ • SW-420 Vibration   │────▶│ 868/915  │────▶│ • WiFi Module         │            │
-│  │ • Water Level        │     │   MHz    │     │ • Serial Output       │            │
-│  │ • INMP441 Microphone │     └──────────┘     │ • Data Buffer         │            │
-│  │ • Battery Management │                       └──────────┬───────────┘            │
-│  └──────────────────────┘                                  │                        │
-│         ▲                                                  │                        │
-│         │                                                  ▼                        │
-│  ┌──────────────────────┐                       ┌──────────────────────┐            │
-│  │   CLIENT NODE #02    │                       │   BACKEND SERVER     │            │
-│  │   [ESP32 + Sensors]  │                       │      [FLASK]         │            │
-│  ├──────────────────────┤      ┌──────────┐    ├──────────────────────┤            │
-│  │ • Identical Setup    │─────▶│   LoRa   │    │ • REST API           │            │
-│  │ • Deep Sleep 99%     │      │  Mesh    │    │ • SQLite Database    │            │
-│  │ • Event-Based TX     │      └──────────┘    │ • WebSocket          │            │
-│  └──────────────────────┘                       │ • Alert Processing   │            │
-│                                                  └──────────┬───────────┘            │
-│                                                             │                        │
-│  ┌──────────────────────┐                                  ▼                        │
-│  │   CLIENT NODE #03    │                       ┌──────────────────────┐            │
-│  │   [ESP32 + Sensors]  │                       │   WEB DASHBOARD      │            │
-│  ├──────────────────────┤      ┌──────────┐    ├──────────────────────┤            │
-│  │ • Solar Charging     │─────▶│   LoRa   │    │ • Real-time Charts   │            │
-│  │ • Ultra-low Power    │      │  Relay   │    │ • Alert Notifications│            │
-│  │ • ...                │      └──────────┘    │ • Historical Data    │            │
-│  └──────────────────────┘                       │ • Node Management    │            │
-│                                                  └──────────────────────┘            │
-│                                                                                       │
-└─────────────────────────────────────────────────────────────────────────────────────┘
+Berikut adalah arsitektur sistem yang menunjukkan alur data dari sensor di hutan hingga ke dashboard monitoring.
+
+```mermaid
+graph TD
+    subgraph "🌲 Forest Area (Remote)"
+        A[Client Node #01<br>ESP32 + Sensors] --> L[(LoRa 868/915 MHz)]
+        B[Client Node #02<br>ESP32 + Sensors] --> L
+        C[Client Node #03<br>ESP32 + Sensors] --> L
+    end
+
+    subgraph "🏕️ Base Camp (Monitoring Post)"
+        L --> D[Master Gateway<br>ESP32 LoRa Receiver]
+        D --> E[Backend Server<br>Flask + SQLite]
+        E --> F[Web Dashboard<br>Real-time Charts]
+    end
+
+    D --> G[(SD Card Backup)]
+    E --> H[Alert System<br>Notifications]
+
+    style A fill:#c7e9c0,stroke:#2e7d32
+    style B fill:#c7e9c0,stroke:#2e7d32
+    style C fill:#c7e9c0,stroke:#2e7d32
+    style D fill:#ffecb3,stroke:#ff6f00
+    style E fill:#bbdefb,stroke:#0d47a1
+    style F fill:#d1c4e9,stroke:#4a148c
+    style L fill:#fff,stroke:#333
 ```
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   🔩 HARDWARE COMPONENTS                              ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 🔩 Hardware Components
 
 ### 📦 **Client Node (Sensor Unit)**
 
@@ -120,160 +101,122 @@
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   🔌 WIRING DIAGRAM - CLIENT NODE                     ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 🔌 Wiring Diagram
 
-```ascii
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                         ESP32 CLIENT NODE - WIRING DIAGRAM                           │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                              ESP32-S3 BOARD                                     │  │
-│  ├───────────────────────────────────────────────────────────────────────────────┤  │
-│  │                                                                               │  │
-│  │  ┌─────┐    ┌─────┐    ┌─────┐    ┌─────┐    ┌─────┐    ┌─────┐             │  │
-│  │  │ 3V3 │    │ GND │    │ EN  │    │ VP  │    │ VN  │    │ 34  │             │  │
-│  │  └──┬──┘    └──┬──┘    └─────┘    └─────┘    └─────┘    └──┬──┘             │  │
-│  │     │          │                                           │                 │  │
-│  │     ▼          ▼                                           ▼                 │  │
-│  │  ┌───────────────────────────────────────────────────────────────────────┐   │  │
-│  │  │                           LoRa Module (RFM95W)                        │   │  │
-│  │  ├───────────────────────────────────────────────────────────────────────┤   │  │
-│  │  │  NSS    SCK    MISO    MOSI    RST    DIO0    GND    3.3V             │   │  │
-│  │  │   │      │       │       │       │       │       │       │             │   │  │
-│  │  │   ▼      ▼       ▼       ▼       ▼       ▼       ▼       ▼             │   │  │
-│  │  │  GPIO5  GPIO18  GPIO19  GPIO23  GPIO14  GPIO26   GND     3.3V          │   │  │
-│  │  └───────────────────────────────────────────────────────────────────────┘   │  │
-│  │                                                                               │  │
-│  │  ┌───────────────────────────────────────────────────────────────────────┐   │  │
-│  │  │                              SENSORS                                   │   │  │
-│  │  ├───────────────────────────────────────────────────────────────────────┤   │  │
-│  │  │                                                                       │   │  │
-│  │  │  MQ-2 Gas Sensor     SW-420 Vibration     Water Level Sensor         │   │  │
-│  │  │  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐             │   │  │
-│  │  │  │ A0 •───────┐│     │ DO •───────┐│     │ A0 •───────┐│             │   │  │
-│  │  │  │ VCC•───┐   ││     │ VCC•───┐   ││     │ VCC•───┐   ││             │   │  │
-│  │  │  │ GND•─┐ │   ││     │ GND•─┐ │   ││     │ GND•─┐ │   ││             │   │  │
-│  │  │  └──────┼─┼───┼┘     └──────┼─┼───┼┘     └──────┼─┼───┼┘             │   │  │
-│  │  │         │ │   │              │ │   │              │ │   │              │   │  │
-│  │  │         ▼ ▼   ▼              ▼ ▼   ▼              ▼ ▼   ▼              │   │  │
-│  │  │      GPIO34 3.3V GND      GPIO27 3.3V GND      GPIO32 3.3V GND        │   │  │
-│  │  │                                                                       │   │  │
-│  │  │  INMP441 Microphone                                                  │   │  │
-│  │  │  ┌─────────────────────┐                                             │   │  │
-│  │  │  │ WS •────────────┐   │                                             │   │  │
-│  │  │  │ SCK•────────┐   │   │                                             │   │  │
-│  │  │  │ SD •────┐   │   │   │                                             │   │  │
-│  │  │  │ VCC•─┐  │   │   │   │                                             │   │  │
-│  │  │  │ GND•─┼──┼───┼───┼───┼┐                                            │   │  │
-│  │  │  └──────┼──┼───┼───┼───┼┘                                            │   │  │
-│  │  │         │  │   │   │   │                                             │   │  │
-│  │  │         ▼  ▼   ▼   ▼   ▼                                             │   │  │
-│  │  │      GPIO25 3.3V GND GPIO26 GPIO32?                                  │   │  │
-│  │  └───────────────────────────────────────────────────────────────────────┘   │  │
-│  │                                                                               │  │
-│  │  ┌───────────────────────────────────────────────────────────────────────┐   │  │
-│  │  │                              POWER                                     │   │  │
-│  │  ├───────────────────────────────────────────────────────────────────────┤   │  │
-│  │  │                                                                       │   │  │
-│  │  │  ┌────────┐      ┌────────┐      ┌────────┐                          │   │  │
-│  │  │  │ LiPo   │─────▶│ TP4056 │─────▶│ ESP32  │                          │   │  │
-│  │  │  │ 3.7V   │      │ Charger│      │ Vin    │                          │   │  │
-│  │  │  └────────┘      └────────┘      └────────┘                          │   │  │
-│  │  │                      │                                               │   │  │
-│  │  │                      ▼                                               │   │  │
-│  │  │                 ┌────────┐                                          │   │  │
-│  │  │                 │ Solar  │                                          │   │  │
-│  │  │                 │ Panel  │                                          │   │  │
-│  │  │                 │ 5V     │                                          │   │  │
-│  │  │                 └────────┘                                          │   │  │
-│  │  └───────────────────────────────────────────────────────────────────────┘   │  │
-│  └───────────────────────────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────────────┘
+Diagram pengkabelan untuk Client Node dan Master Gateway.
+
+### Client Node
+
+```mermaid
+graph TD
+    subgraph ESP32-S3[ESP32-S3 Board]
+        direction TB
+        Pins[GPIO Pins]
+    end
+
+    subgraph Sensors[Sensors]
+        MQ2[MQ-2 Gas Sensor]
+        SW420[SW-420 Vibration]
+        Water[Water Level Sensor]
+        INMP[INMP441 Microphone]
+    end
+
+    subgraph LoRa[LoRa Module RFM95W]
+        NSS[NSS]
+        SCK[SCK]
+        MISO[MISO]
+        MOSI[MOSI]
+        RST[RST]
+        DIO0[DIO0]
+    end
+
+    subgraph Power[Power System]
+        BATT[LiPo 3.7V]
+        CHARGER[TP4056 Charger]
+        SOLAR[Solar Panel 5V]
+    end
+
+    ESP32-S3 -- GPIO5 --> NSS
+    ESP32-S3 -- GPIO18 --> SCK
+    ESP32-S3 -- GPIO19 --> MISO
+    ESP32-S3 -- GPIO23 --> MOSI
+    ESP32-S3 -- GPIO14 --> RST
+    ESP32-S3 -- GPIO26 --> DIO0
+
+    ESP32-S3 -- GPIO34 --> MQ2
+    ESP32-S3 -- GPIO27 --> SW420
+    ESP32-S3 -- GPIO32 --> Water
+    ESP32-S3 -- GPIO25 --> INMP
+
+    BATT --> CHARGER
+    SOLAR --> CHARGER
+    CHARGER --> ESP32-S3
+
+    style ESP32-S3 fill:#f9f,stroke:#333,stroke-width:2px
+    style Sensors fill:#ccf,stroke:#333,stroke-width:2px
+    style LoRa fill:#cfc,stroke:#333,stroke-width:2px
+    style Power fill:#fcf,stroke:#333,stroke-width:2px
+```
+
+### Master Gateway
+
+```mermaid
+graph TD
+    subgraph ESP32[ESP32 Board]
+        Pins[GPIO Pins]
+    end
+
+    subgraph LoRa[LoRa Module RFM95W]
+        NSS[NSS]
+        SCK[SCK]
+        MISO[MISO]
+        MOSI[MOSI]
+        RST[RST]
+        DIO0[DIO0]
+    end
+
+    subgraph SD[SD Card Module]
+        CS[CS]
+        SCK_SD[SCK]
+        MOSI_SD[MOSI]
+        MISO_SD[MISO]
+    end
+
+    subgraph LED[LED Indicator]
+        RED[Red LED]
+        GREEN[Green LED]
+        BLUE[Blue LED]
+    end
+
+    ESP32 -- GPIO5 --> NSS
+    ESP32 -- GPIO18 --> SCK
+    ESP32 -- GPIO19 --> MISO
+    ESP32 -- GPIO23 --> MOSI
+    ESP32 -- GPIO14 --> RST
+    ESP32 -- GPIO26 --> DIO0
+
+    ESP32 -- GPIO4 --> CS
+    ESP32 -- GPIO18 --> SCK_SD
+    ESP32 -- GPIO23 --> MOSI_SD
+    ESP32 -- GPIO19 --> MISO_SD
+
+    ESP32 -- GPIO12 --> RED
+    ESP32 -- GPIO13 --> GREEN
+    ESP32 -- GPIO27 --> BLUE
+
+    style ESP32 fill:#f9f,stroke:#333,stroke-width:2px
+    style LoRa fill:#cfc,stroke:#333,stroke-width:2px
+    style SD fill:#ccf,stroke:#333,stroke-width:2px
+    style LED fill:#fcf,stroke:#333,stroke-width:2px
 ```
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   🔌 WIRING DIAGRAM - MASTER GATEWAY                  ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 📡 Communication Flow
 
-```ascii
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                         ESP32 MASTER GATEWAY - WIRING DIAGRAM                        │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                              ESP32 BOARD                                        │  │
-│  ├───────────────────────────────────────────────────────────────────────────────┤  │
-│  │                                                                               │  │
-│  │  ┌─────┐    ┌─────┐    ┌─────┐    ┌─────┐    ┌─────┐    ┌─────┐             │  │
-│  │  │ 3V3 │    │ GND │    │ EN  │    │ D4  │    │ D5  │    │ D18 │             │  │
-│  │  └──┬──┘    └──┬──┘    └─────┘    └──┬──┘    └──┬──┘    └──┬──┘             │  │
-│  │     │          │                      │         │          │                 │  │
-│  │     ▼          ▼                      ▼         ▼          ▼                 │  │
-│  │  ┌───────────────────────────────────────────────────────────────────────┐   │  │
-│  │  │                           LoRa Module (RFM95W)                        │   │  │
-│  │  ├───────────────────────────────────────────────────────────────────────┤   │  │
-│  │  │  NSS    SCK    MISO    MOSI    RST    DIO0    GND    3.3V             │   │  │
-│  │  │   │      │       │       │       │       │       │       │             │   │  │
-│  │  │   ▼      ▼       ▼       ▼       ▼       ▼       ▼       ▼             │   │  │
-│  │  │  GPIO5  GPIO18  GPIO19  GPIO23  GPIO14  GPIO26   GND     3.3V          │   │  │
-│  │  └───────────────────────────────────────────────────────────────────────┘   │  │
-│  │                                                                               │  │
-│  │  ┌───────────────────────────────────────────────────────────────────────┐   │  │
-│  │  │                           SD CARD MODULE                               │   │  │
-│  │  ├───────────────────────────────────────────────────────────────────────┤   │  │
-│  │  │  CS     SCK    MOSI    MISO    VCC     GND                              │   │  │
-│  │  │   │      │       │       │       │       │                              │   │  │
-│  │  │   ▼      ▼       ▼       ▼       ▼       ▼                              │   │  │
-│  │  │  GPIO4  GPIO18  GPIO23  GPIO19  5V      GND                             │   │  │
-│  │  └───────────────────────────────────────────────────────────────────────┘   │  │
-│  │                                                                               │  │
-│  │  ┌───────────────────────────────────────────────────────────────────────┐   │  │
-│  │  │                           LED INDICATOR                                │   │  │
-│  │  ├───────────────────────────────────────────────────────────────────────┤   │  │
-│  │  │  Red LED ────┐                                                         │   │  │
-│  │  │  Green LED ───┼──── GPIO12, GPIO13, GPIO27 via 220Ω resistors         │   │  │
-│  │  │  Blue LED ────┘                                                         │   │  │
-│  │  └───────────────────────────────────────────────────────────────────────┘   │  │
-│  │                                                                               │  │
-│  │  ┌───────────────────────────────────────────────────────────────────────┐   │  │
-│  │  │                           CONNECTIVITY                                 │   │  │
-│  │  ├───────────────────────────────────────────────────────────────────────┤   │  │
-│  │  │  • Built-in WiFi → HTTP POST to Flask Backend                         │   │  │
-│  │  │  • USB Serial → Debug & Logging                                       │   │  │
-│  │  │  • Optional Ethernet via ETH board                                    │   │  │
-│  │  └───────────────────────────────────────────────────────────────────────┘   │  │
-│  │                                                                               │  │
-│  │  ┌───────────────────────────────────────────────────────────────────────┐   │  │
-│  │  │                           POWER                                         │   │  │
-│  │  ├───────────────────────────────────────────────────────────────────────┤   │  │
-│  │  │  ┌────────┐                                                            │   │  │
-│  │  │  │ 5V USB │───────────▶ ESP32 Vin                                     │   │  │
-│  │  │  └────────┘                         (Continuous Operation)            │   │  │
-│  │  └───────────────────────────────────────────────────────────────────────┘   │  │
-│  └───────────────────────────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   📡 COMMUNICATION FLOW                               ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+Protokol komunikasi dari sensor hingga ke dashboard.
 
 ### 📦 **Data Packet Format**
-
-```
-┌─────────┬────────┬──────────┬──────────┬──────────┐
-│ NODE_ID │  TYPE  │  VALUE1  │  VALUE2  │ BATTERY  │
-├─────────┼────────┼──────────┼──────────┼──────────┤
-│   01    │  FIRE  │    78    │   350    │   3.4    │
-└─────────┴────────┴──────────┴──────────┴──────────┘
-```
 
 | Field | Deskripsi | Range/Contoh |
 |-------|-----------|---------------|
@@ -285,30 +228,22 @@
 
 ### 🔄 **Communication Sequence**
 
-```ascii
-┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
-│ SENSOR  │────▶│ CLIENT  │────▶│ MASTER  │────▶│ BACKEND │────▶│DASHBOARD│
-│ TRIGGER │     │ ESP32   │     │ ESP32   │     │ FLASK   │     │         │
-└─────────┘     └─────────┘     └─────────┘     └─────────┘     └─────────┘
-    │               │               │               │               │
-    ▼               ▼               ▼               ▼               ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│                           TIME LINE                                      │
-├─────────────────────────────────────────────────────────────────────────┤
-│ 0ms    │          │          │          │          │          │        │
-│        ▼          ▼          ▼          ▼          ▼          ▼        │
-│  ├──────┴──────┬──┴──────┬──┴──────┬──┴──────┬──┴──────┬──┴──────┬──┤
-│                                                                         │
-│ • Sensor trigger (vibration/intruder)                                   │
-│ • ESP32 wake from deep sleep (10μA → 80mA)                             │
-│ • Sensor reading (100ms)                                               │
-│ • LoRa TX (500ms) - Packet: "01|FIRE|78|350|3.4"                      │
-│ • LoRa RX at Master - Validate packet                                  │
-│ • Master sends HTTP POST to Flask (WiFi)                               │
-│ • Flask processes & stores in SQLite                                   │
-│ • WebSocket push to dashboard (real-time)                              │
-│ • Client returns to deep sleep                                         │
-└─────────────────────────────────────────────────────────────────────────┘
+```mermaid
+sequenceDiagram
+    participant Sensor as Sensor Trigger
+    participant Client as Client ESP32
+    participant Master as Master ESP32
+    participant Backend as Backend Flask
+    participant Dashboard as Dashboard UI
+
+    Sensor->>Client: 1. Wake-up Interrupt
+    Client->>Client: 2. Read Sensors (100ms)
+    Client->>Master: 3. LoRa TX (500ms)<br/>Packet: "01|FIRE|78|350|3.4"
+    Master->>Master: 4. Validate Packet
+    Master->>Backend: 5. HTTP POST /api/data
+    Backend->>Backend: 6. Store in SQLite
+    Backend->>Dashboard: 7. WebSocket Broadcast
+    Client->>Client: 8. Return to Deep Sleep
 ```
 
 ### 📡 **LoRa Configuration**
@@ -324,31 +259,32 @@
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   ⚡ POWER MANAGEMENT STRATEGY                         ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## ⚡ Power Management Strategy
 
 ### 📊 **Power Profile - Client Node**
 
-```ascii
-                           POWER CONSUMPTION OVER TIME
-    ┌─────────────────────────────────────────────────────────────────────┐
-    │                                                           ACTIVE    │
-    │  Current (mA)                                           ┌────┐     │
-    │                                                         │    │     │
-    │  80mA ─────────────────────────────────────────────────┘    └─────►
-    │                                                                   
-    │                                                                   
-    │                                                                   
-    │                                                                   
-    │  10μA ────┐                 ┌─────────────────┐                 
-    │           │                 │                 │                 
-    │           │                 │                 │                 
-    │           │                 │                 │                 
-    │      DEEP SLEEP         DEEP SLEEP        DEEP SLEEP            
-    │      (99% time)          (99% time)        (99% time)           
-    └─────────────────────────────────────────────────────────────────────►
-             15 min               15 min               15 min          Time
+```mermaid
+gantt
+    title Power Consumption Over Time
+    dateFormat HH:mm
+    axisFormat %H:%M
+    
+    section Deep Sleep (10μA)
+    Deep Sleep :done, ds1, 00:00, 15m
+    Deep Sleep :ds2, after ds1, 15m
+    Deep Sleep :ds3, after ds2, 15m
+
+    section Wake & Sense (80mA)
+    Wake Up :active, w1, 00:15, 100ms
+    
+    section Transmit (80mA)
+    LoRa TX :active, t1, 00:15:01, 500ms
+
+    section Wake & Sense (80mA)
+    Wake Up :w2, 00:30, 100ms
+    
+    section Transmit (80mA)
+    LoRa TX :t2, 00:30:01, 500ms
 ```
 
 ### ⚡ **Power States**
@@ -384,85 +320,88 @@ Estimated Battery Life: 2000 mAh / 0.563 mAh per day ≈ 3,552 days ≈ 9.7 year
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   💻 BACKEND ARCHITECTURE                             ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 💻 Backend Architecture
 
 ### 🏗️ **Backend Structure**
 
-```ascii
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        FLASK BACKEND ARCHITECTURE                        │
-├─────────────────────────────────────────────────────────────────────────┤
-│                                                                           │
-│  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                           Flask App                                │  │
-│  │   ┌───────────────────────────────────────────────────────────┐   │  │
-│  │   │                        Routes                             │   │  │
-│  │   │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │   │  │
-│  │   │  │  /api/data   │  │  /api/nodes  │  │  /api/alerts │   │   │  │
-│  │   │  │  POST/GET    │  │  GET/PUT     │  │  GET/PATCH   │   │   │  │
-│  │   │  └──────────────┘  └──────────────┘  └──────────────┘   │   │  │
-│  │   └───────────────────────────────────────────────────────────┘   │  │
-│  │                              │                                     │  │
-│  │                              ▼                                     │  │
-│  │   ┌───────────────────────────────────────────────────────────┐   │  │
-│  │   │                      WebSocket (Flask-SocketIO)           │   │  │
-│  │   │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │   │  │
-│  │   │  │  connect     │  │  new_data    │  │  new_alert   │   │   │  │
-│  │   │  │  event       │  │  broadcast   │  │  broadcast   │   │   │  │
-│  │   │  └──────────────┘  └──────────────┘  └──────────────┘   │   │  │
-│  │   └───────────────────────────────────────────────────────────┘   │  │
-│  │                              │                                     │  │
-│  │                              ▼                                     │  │
-│  │   ┌───────────────────────────────────────────────────────────┐   │  │
-│  │   │                    Database (SQLAlchemy)                   │   │  │
-│  │   │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐   │   │  │
-│  │   │  │    Nodes     │  │   Readings   │  │    Alerts    │   │   │  │
-│  │   │  │  - id        │  │  - id        │  │  - id        │   │   │  │
-│  │   │  │  - node_id   │  │  - node_id   │  │  - node_id   │   │   │  │
-│  │   │  │  - location  │  │  - timestamp │  │  - type      │   │   │  │
-│  │   │  │  - battery   │  │  - value1    │  │  - severity  │   │   │  │
-│  │   │  │  - last_seen │  │  - value2    │  │  - timestamp │   │   │  │
-│  │   │  └──────────────┘  └──────────────┘  └──────────────┘   │   │  │
-│  │   └───────────────────────────────────────────────────────────┘   │  │
-│  └───────────────────────────────────────────────────────────────────┘  │
-│                              │                                           │
-│                              ▼                                           │
-│  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │                      Web Dashboard (HTML/JS)                      │  │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐           │  │
-│  │  │  Real-time   │  │  Historical  │  │  Node Map    │           │  │
-│  │  │  Charts      │  │  Data Table  │  │  & Status    │           │  │
-│  │  └──────────────┘  └──────────────┘  └──────────────┘           │  │
-│  └───────────────────────────────────────────────────────────────────┘  │
-│                                                                           │
-└─────────────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph Flask[Flask Application]
+        Routes[Routes]
+        WS[WebSocket SocketIO]
+        DB[(SQLite Database)]
+    end
+
+    subgraph RoutesDetail[API Endpoints]
+        D1[/api/data - POST/GET]
+        D2[/api/nodes - GET/PUT]
+        D3[/api/alerts - GET/PATCH]
+    end
+
+    subgraph WebSocket[WebSocket Events]
+        W1[connect]
+        W2[new_data]
+        W3[new_alert]
+    end
+
+    subgraph Database[Database Models]
+        T1[Nodes Table]
+        T2[Readings Table]
+        T3[Alerts Table]
+    end
+
+    Flask --> RoutesDetail
+    Flask --> WebSocket
+    Flask --> Database
+
+    Routes --> D1 & D2 & D3
+    WS --> W1 & W2 & W3
+    DB --> T1 & T2 & T3
+
+    Dashboard[Web Dashboard HTML/JS] --> WS
+    Master[Master Gateway] --> Routes
+
+    style Flask fill:#bbdefb,stroke:#0d47a1
+    style Dashboard fill:#d1c4e9,stroke:#4a148c
+    style Master fill:#ffecb3,stroke:#ff6f00
 ```
 
 ### 📊 **Database Schema (ERD)**
 
-```ascii
-┌───────────────────┐       ┌───────────────────┐       ┌───────────────────┐
-│      NODES        │       │     READINGS      │       │     ALERTS        │
-├───────────────────┤       ├───────────────────┤       ├───────────────────┤
-│ id (PK) INTEGER   │──────▶│ id (PK) INTEGER   │       │ id (PK) INTEGER   │
-│ node_id TEXT      │       │ node_id TEXT (FK) │       │ node_id TEXT (FK) │
-│ location TEXT     │       │ timestamp DATETIME│       │ type TEXT         │
-│ battery FLOAT     │       │ sensor_type TEXT  │       │ severity INTEGER  │
-│ last_seen DATETIME│       │ value1 FLOAT      │       │ description TEXT  │
-│ status TEXT       │       │ value2 FLOAT      │       │ timestamp DATETIME│
-│ created_at DATETIME│      │ created_at DATETIME│      │ acknowledged BOOL │
-└───────────────────┘       └───────────────────┘       └───────────────────┘
-         │                           │                           │
-         │                           │                           │
-         ▼                           ▼                           ▼
-┌─────────────────────────────────────────────────────────────────────┐
-│                         RELATIONSHIPS                                │
-│  • Nodes memiliki banyak Readings (one-to-many)                     │
-│  • Nodes memiliki banyak Alerts (one-to-many)                       │
-│  • node_id sebagai foreign key di Readings dan Alerts               │
-└─────────────────────────────────────────────────────────────────────┘
+```mermaid
+erDiagram
+    NODES ||--o{ READINGS : has
+    NODES ||--o{ ALERTS : has
+
+    NODES {
+        int id PK
+        string node_id
+        string location
+        float battery
+        datetime last_seen
+        string status
+        datetime created_at
+    }
+
+    READINGS {
+        int id PK
+        string node_id FK
+        datetime timestamp
+        string sensor_type
+        float value1
+        float value2
+        datetime created_at
+    }
+
+    ALERTS {
+        int id PK
+        string node_id FK
+        string type
+        int severity
+        string description
+        datetime timestamp
+        bool acknowledged
+    }
 ```
 
 ### 📁 **Project Structure**
@@ -511,9 +450,7 @@ forest-sentinel/
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   🚀 HOW TO RUN                                       ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 🚀 How To Run
 
 ### 📋 **Prerequisites**
 
@@ -523,8 +460,6 @@ forest-sentinel/
 | **Python** | 3.8+ with pip |
 | **LoRa Modules** | RFM95W / RFM96W |
 | **Sensors** | MQ-2, SW-420, Water Level, INMP441 |
-
----
 
 ### 1️⃣ **Setup Client Node**
 
@@ -557,8 +492,6 @@ pio run --target upload --environment esp32-s3
 pio device monitor
 ```
 
----
-
 ### 2️⃣ **Setup Master Gateway**
 
 ```bash
@@ -582,8 +515,6 @@ pio run --target upload --environment esp32
 // Monitor
 pio device monitor
 ```
-
----
 
 ### 3️⃣ **Setup Backend Server**
 
@@ -616,8 +547,6 @@ python-socketio==5.9.0
 eventlet==0.33.3
 pandas==2.0.3
 ```
-
----
 
 ### 4️⃣ **Configuration Files**
 
@@ -681,31 +610,44 @@ if __name__ == '__main__':
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   📊 FUTURE DEVELOPMENT                               ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 📊 Future Development
 
 ### 🚧 **Roadmap**
 
-```ascii
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                         DEVELOPMENT ROADMAP 2024-2025                           │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                   │
-│  Q1 2024    Q2 2024    Q3 2024    Q4 2024    Q1 2025    Q2 2025    Q3 2025     │
-│    │          │          │          │          │          │          │          │
-│    ▼          ▼          ▼          ▼          ▼          ▼          ▼          │
-│  ┌────┐     ┌────┐     ┌────┐     ┌────┐     ┌────┐     ┌────┐     ┌────┐     │
-│  │v1.0│────▶│v1.5│────▶│v2.0│────▶│v2.5│────▶│v3.0│────▶│v3.5│────▶│v4.0│     │
-│  └────┘     └────┘     └────┘     └────┘     └────┘     └────┘     └────┘     │
-│    │          │          │          │          │          │          │          │
-│    ▼          ▼          ▼          ▼          ▼          ▼          ▼          │
-│ • Basic     • Solar    • LoRaWAN  • Mesh     • ML on   • Mobile   • Satellite  │
-│ • LoRa      • Charging • Gateway  • Network  • Edge     • App      • Backhaul  │
-│ • 3 Sensors • Web      • Cloud    • Multi-   • Predict- • Push     • Global    │
-│ • Deep Sleep• Dashboard• Sync     • hop      • tions    • Notif    • Coverage  │
-│                                                                                   │
-└─────────────────────────────────────────────────────────────────────────────────┘
+```mermaid
+gantt
+    title Development Roadmap 2024-2025
+    dateFormat YYYY-MM
+    axisFormat %b %Y
+    
+    section v1.0 - Basic LoRa
+    Basic LoRa Communication :done, 2024-01, 90d
+    3 Sensors Integration :done, 2024-01, 90d
+    Deep Sleep Implementation :done, 2024-02, 60d
+
+    section v1.5 - Infrastructure
+    Solar Charging :active, 2024-04, 90d
+    Web Dashboard :active, 2024-05, 60d
+
+    section v2.0 - Network
+    LoRaWAN Gateway : 2024-07, 120d
+    Cloud Sync : 2024-08, 90d
+
+    section v2.5 - Intelligence
+    Mesh Networking : 2024-11, 90d
+    Multi-hop Routing : 2024-12, 60d
+
+    section v3.0 - Edge AI
+    ML on Edge : 2025-02, 90d
+    Fire Predictions : 2025-03, 60d
+
+    section v3.5 - Mobility
+    Mobile App : 2025-05, 90d
+    Push Notifications : 2025-06, 60d
+
+    section v4.0 - Global
+    Satellite Backhaul : 2025-08, 120d
+    Global Coverage : 2025-09, 90d
 ```
 
 ### 🔮 **Planned Features**
@@ -739,113 +681,90 @@ Kami sangat terbuka untuk kontribusi! Area yang bisa dikerjakan:
 
 ---
 
-╔══════════════════════════════════════════════════════════════════════════════════════╗
-║                                   📷 PROJECT PREVIEW                                  ║
-╚══════════════════════════════════════════════════════════════════════════════════════╝
+## 📷 Project Preview
 
 ### 🖥️ **Web Dashboard Preview**
 
-```ascii
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                         FOREST SENTINEL - MONITORING DASHBOARD                       │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                       │
-│  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                           SYSTEM STATUS OVERVIEW                               │  │
-│  ├───────────────────────────────────────────────────────────────────────────────┤  │
-│  │                                                                               │  │
-│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │  │
-│  │  │   TOTAL      │  │   ACTIVE     │  │   ALERTS     │  │   BATTERY    │     │  │
-│  │  │   NODES      │  │   NODES      │  │   TODAY      │  │   AVG        │     │  │
-│  │  │     ╔══╗     │  │     ╔══╗     │  │     ╔══╗     │  │     ╔══╗     │     │  │
-│  │  │     ║12║     │  │     ║10║     │  │     ║03║     │  │     ║78║     │     │  │
-│  │  │     ╚══╝     │  │     ╚══╝     │  │     ╚══╝     │  │     ╚══╝     │     │  │
-│  │  │    Devices   │  │   Connected  │  │  New Alerts  │  │    Health %   │     │  │
-│  │  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘     │  │
-│  └───────────────────────────────────────────────────────────────────────────────┘  │
-│                                                                                       │
-│  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                           NODE STATUS GRID                                     │  │
-│  ├───────────────────────────────────────────────────────────────────────────────┤  │
-│  │                                                                               │  │
-│  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐              │  │
-│  │  │   NODE 01       │  │   NODE 02       │  │   NODE 03       │              │  │
-│  │  │   Forest A      │  │   Forest B      │  │   River C       │              │  │
-│  │  ├─────────────────┤  ├─────────────────┤  ├─────────────────┤              │  │
-│  │  │  🔥 FIRE        │  │  💧 FLOOD       │  │  🌊 NORMAL      │              │  │
-│  │  │  78°C / 350ppm  │  │  45cm / 30cm   │  │  24°C / 65%     │              │  │
-│  │  │  ⚡ 3.7V ████░  │  │  ⚡ 4.1V █████  │  │  ⚡ 3.9V ████▒  │              │  │
-│  │  │  🕒 10:32 AM    │  │  🕒 10:30 AM   │  │  🕒 10:28 AM    │              │  │
-│  │  └─────────────────┘  └─────────────────┘  └─────────────────┘              │  │
-│  │                                                                               │  │
-│  │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐              │  │
-│  │  │   NODE 04       │  │   NODE 05       │  │   NODE 06       │              │  │
-│  │  │   Hill D        │  │   Valley E      │  │   Ridge F       │              │  │
-│  │  ├─────────────────┤  ├─────────────────┤  ├─────────────────┤              │  │
-│  │  │  🌫️ SMOKE       │  │  🟢 OK          │  │  ⚠️ LOW BAT     │              │  │
-│  │  │  120ppm / 42°C  │  │  22°C / 1013hPa│  │  25°C / 68%     │              │  │
-│  │  │  ⚡ 4.0V ████▒  │  │  ⚡ 4.2V █████  │  │  ⚡ 3.2V ██░░░  │              │  │
-│  │  │  🕒 10:25 AM    │  │  🕒 10:22 AM   │  │  🕒 10:20 AM    │              │  │
-│  │  └─────────────────┘  └─────────────────┘  └─────────────────┘              │  │
-│  └───────────────────────────────────────────────────────────────────────────────┘  │
-│                                                                                       │
-│  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                           REAL-TIME ALERT LOG                                  │  │
-│  ├───────────────────────────────────────────────────────────────────────────────┤  │
-│  │  [10:32:15] 🚨 CRITICAL: FIRE detected at Node 01 - Temp: 78°C, Smoke: 350ppm │  │
-│  │  [10:30:22] ⚠️ WARNING: Flood level rising at Node 02 - Current: 45cm        │  │
-│  │  [10:28:07] ℹ️ INFO: Node 03 - Normal operation                              │  │
-│  │  [10:25:43] 🔋 LOW BATTERY: Node 06 - 3.2V, please replace soon             │  │
-│  │  [10:22:18] ✅ ACKNOWLEDGED: Alert #1234 - Fire risk mitigated              │  │
-│  └───────────────────────────────────────────────────────────────────────────────┘  │
-│                                                                                       │
-│  ┌───────────────────────────────────────────────────────────────────────────────┐  │
-│  │                           HISTORICAL CHART                                      │  │
-│  ├───────────────────────────────────────────────────────────────────────────────┤  │
-│  │  Temperature Trend - Node 01 (Last 24h)                                       │  │
-│  │  80°C ┼───────────╔══╗────────────────────────────────────────────────────   │  │
-│  │  60°C ┼────────╔══╝  ╚══╗───────────────────────────────────────────────   │  │
-│  │  40°C ┼────╔═══╝       ╚═══╗────────────────────────────────────────────   │  │
-│  │  20°C ┼═╗──╝                ╚══╗─────────────────────────────────────────   │  │
-│  │       └────────────────────────────────────────────────────────────────────   │  │
-│  │        00:00    06:00    12:00    18:00    23:59                            │  │
-│  └───────────────────────────────────────────────────────────────────────────────┘  │
-│                                                                                       │
-└─────────────────────────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    subgraph Dashboard[Web Dashboard Interface]
+        Header[System Status Overview]
+        Stats[Node Statistics Cards]
+        Grid[Node Status Grid]
+        Log[Real-time Alert Log]
+        Chart[Historical Chart]
+    end
+
+    subgraph StatsCards[Status Cards]
+        C1[Total Nodes: 12]
+        C2[Active Nodes: 10]
+        C3[Alerts Today: 03]
+        C4[Battery Avg: 78%]
+    end
+
+    subgraph NodeGrid[6-Node Status Display]
+        N1[Node 01: 🔥 FIRE<br>78°C / 350ppm<br>Battery: 3.7V]
+        N2[Node 02: 💧 FLOOD<br>45cm / 30cm<br>Battery: 4.1V]
+        N3[Node 03: 🌊 NORMAL<br>24°C / 65%<br>Battery: 3.9V]
+        N4[Node 04: 🌫️ SMOKE<br>42°C / 120ppm<br>Battery: 4.0V]
+        N5[Node 05: 🟢 OK<br>22°C / 1013hPa<br>Battery: 4.2V]
+        N6[Node 06: ⚠️ LOW BAT<br>25°C / 68%<br>Battery: 3.2V]
+    end
+
+    subgraph AlertLog[Recent Alerts]
+        A1[🚨 CRITICAL: FIRE at Node 01 - 10:32]
+        A2[⚠️ WARNING: Flood at Node 02 - 10:30]
+        A3[ℹ️ INFO: Node 03 Normal - 10:28]
+        A4[🔋 LOW BATTERY: Node 06 - 10:25]
+    end
+
+    subgraph Historical[24h Temperature Chart]
+        H1[80°C ───────╔══╗────────]
+        H2[60°C ───╔══╝  ╚══╗─────]
+        H3[40°C ─╔═╝       ╚═╗───]
+        H4[20°C ═╝            ╚══─]
+        H5[00:00    12:00    23:59]
+    end
+
+    Dashboard --> StatsCards
+    Dashboard --> NodeGrid
+    Dashboard --> AlertLog
+    Dashboard --> Historical
 ```
 
 ### 📱 **Mobile View Preview**
 
-```ascii
-┌─────────────────────┐
-│  FOREST SENTINEL    │
-├─────────────────────┤
-│                     │
-│  🔴 ALERT: FIRE     │
-│  Node 01 - 78°C     │
-│  10:32 AM           │
-├─────────────────────┤
-│  NODE STATUS        │
-│  ┌───────────────┐  │
-│  │01 🔥 78° 3.7V │  │
-│  │02 💧 45cm 4.1V│  │
-│  │03 ✅ 24° 3.9V │  │
-│  │04 🌫️ 42° 4.0V│  │
-│  │05 ✅ 22° 4.2V│  │
-│  │06 ⚠️ 25° 3.2V│  │
-│  └───────────────┘  │
-├─────────────────────┤
-│  BATTERY OVERVIEW   │
-│  01: ████░░ 70%    │
-│  02: █████ 85%     │
-│  03: ████▒ 75%     │
-│  04: ████▒ 78%     │
-│  05: █████ 90%     │
-│  06: ██░░░ 45%     │
-├─────────────────────┤
-│  📊 View Charts     │
-│  ⚙️ Settings        │
-└─────────────────────┘
+```mermaid
+graph TD
+    subgraph Mobile[Mobile App Interface]
+        Header[🌲 FOREST SENTINEL]
+        Alert[🔴 ALERT: FIRE<br>Node 01 - 78°C<br>10:32 AM]
+        Status[Node Status List]
+        Batt[Battery Overview]
+        Footer[📊 Charts<br>⚙️ Settings]
+    end
+
+    subgraph StatusList[Status List]
+        L1[01 🔥 78° 3.7V]
+        L2[02 💧 45cm 4.1V]
+        L3[03 ✅ 24° 3.9V]
+        L4[04 🌫️ 42° 4.0V]
+        L5[05 ✅ 22° 4.2V]
+        L6[06 ⚠️ 25° 3.2V]
+    end
+
+    subgraph BatteryOverview[Battery %]
+        B1[01: ████░░ 70%]
+        B2[02: █████ 85%]
+        B3[03: ████▒ 75%]
+        B4[04: ████▒ 78%]
+        B5[05: █████ 90%]
+        B6[06: ██░░░ 45%]
+    end
+
+    Mobile --> Alert
+    Mobile --> StatusList
+    Mobile --> BatteryOverview
 ```
 
 ---
@@ -897,14 +816,15 @@ of this software and associated documentation files...
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════════════╗
-║                                                                                   ║
-║     🌲 FOREST SENTINEL LORA SYSTEM - Protecting Forests with Technology         ║
-║                                                                                   ║
-║     ⭐ Star us on GitHub! · 🐛 Report Bug · 📫 Request Feature                  ║
-║                                                                                   ║
+║                                                                                  ║
+║     🌲 FOREST SENTINEL LORA SYSTEM - Protecting Forests with Technology          ║
+║                                                                                  ║
+║     ⭐ Star us on GitHub! · 🐛 Report Bug · 📫 Request Feature                   ║
+║                                                                                  ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
 
 **Built with ❤️ for forest conservation | Version 1.0.0 | Last Updated: 22 Feb 2026**
 
 </div>
+```
