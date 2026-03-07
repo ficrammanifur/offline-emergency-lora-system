@@ -823,15 +823,14 @@ of this software and associated documentation files...
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════════════╗
-║                                                                                   ║
-║     🌲 FOREST SENTINEL LORA SYSTEM - Protecting Forests with Technology         ║
-║                                                                                   ║
-║     ⭐ Star us on GitHub! · 🐛 Report Bug · 📫 Request Feature                  ║
-║                                                                                   ║
+║                                                                                  ║
+║     🌲 FOREST SENTINEL LORA SYSTEM - Protecting Forests with Technology          ║
+║                                                                                  ║
+║     ⭐ Star us on GitHub! · 🐛 Report Bug · 📫 Request Feature                   ║
+║                                                                                  ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
 
 **Built with ❤️ for forest conservation | Version 1.0.0 | Last Updated: 22 Feb 2026**
 
 </div>
-```
