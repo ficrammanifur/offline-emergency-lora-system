@@ -1,6 +1,3 @@
-Maaf atas kesalahan sebelumnya. Berikut adalah file `README.md` yang telah diperbaiki sepenuhnya dengan diagram Mermaid yang sudah dikoreksi dan siap untuk diretas di GitHub.
-
-```markdown
 <div align="center">
 
 # 🌲 FOREST SENTINEL LORA SYSTEM
