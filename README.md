@@ -4,7 +4,7 @@
 
 **Long-Range Wireless Environmental Monitoring & Emergency Detection for Remote Forest Areas**
 
-[![Last Commit](https://img.shields.io/badge/last_update-22_Feb_2026-brightgreen?style=for-the-badge)](https://github.com/forest-sentinel/lora-system)
+[![Last Commit](https://img.shields.io/badge/last_update-7_Mar_2026-brightgreen?style=for-the-badge)](https://github.com/forest-sentinel/lora-system)
 [![Language](https://img.shields.io/badge/language-C%2B%2B%20%7C%20Python-orange?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://cplusplus.com/)
 [![Platform](https://img.shields.io/badge/platform-ESP32-red?style=for-the-badge&logo=espressif&logoColor=white)](https://www.espressif.com/)
 [![RTOS](https://img.shields.io/badge/RTOS-FreeRTOS-green?style=for-the-badge)](https://www.freertos.org/)
@@ -1233,7 +1233,7 @@ of this software and associated documentation files...
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
 
-**Built with ❤️ for forest conservation | Version 2.0.0 | Last Updated: 22 Feb 2026**
+**Built with ❤️ for forest conservation | Version 2.0.0 | Last Updated: 7 Mar 2026**
 
 <p><a href="#top">⬆ Back on Top</a></p>
 
