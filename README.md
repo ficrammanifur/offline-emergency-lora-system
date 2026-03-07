@@ -21,13 +21,18 @@
 
 ---
 
-## 📑 Daftar Isi
+## 📋 Daftar Isi
 
-<div align="center">
-
-[✨ Overview](#-overview) • [🧠 System Architecture](#-system-architecture) • [🔩 Hardware](#-hardware-components) • [🔌 Wiring](#-wiring-diagram) • [📡 Communication](#-communication-flow) • [⚡ Power](#-power-management-strategy) • [💻 Backend](#-backend-architecture) • [🚀 How To Run](#-how-to-run) • [📊 Future](#-future-development) • [📷 Preview](#-project-preview)
-
-</div>
+- [✨ Overview](#-overview)
+- [🧠 System Architecture](#-system-architecture)
+- [🔩 Hardware](#-hardware-components)
+- [🔌 Wiring](#-wiring-diagram)
+- [📡 Communication](#-communication-flow)
+- [⚡ Power](#-power-management-strategy)
+- [💻 Backend](#-backend-architecture)
+- [🚀 How To Run](#-how-to-run)
+- [📊 Future](#-future-development)
+- [📷 Preview](#-project-preview)
 
 ---
 
@@ -1082,48 +1087,48 @@ gantt
 ```mermaid
 graph TD
     subgraph Dashboard[Web Dashboard Interface]
-        Header[🌲 FOREST SENTINEL - INTELLIGENT MONITORING]
+        Header["🌲 FOREST SENTINEL - INTELLIGENT MONITORING"]
         
         subgraph Stats[System Status]
-            S1[Total Nodes: 12]
-            S2[Active: 10]
-            S3[Alerts: 03]
-            S4[Weather: 28°C, 82%]
+            S1["Total Nodes: 12"]
+            S2["Active: 10"]
+            S3["Alerts: 03"]
+            S4["Weather: 28°C, 82%"]
         end
         
         subgraph Risk[AI Risk Assessment]
-            R1[🔥 FIRE RISK]
-            R2[72% HIGH]
-            R3[⚠️ Based on: Temp 32°C, Smoke 150ppm, Wind 12km/h]
-            R4[Recommendation: Waspada! Kondisi berpotensi kebakaran]
+            R1["🔥 FIRE RISK"]
+            R2["72% HIGH"]
+            R3["⚠️ Based on: Temp 32°C, Smoke 150ppm, Wind 12km/h"]
+            R4["Recommendation: Waspada! Kondisi berpotensi kebakaran"]
         end
         
         subgraph Nodes[Node Status]
-            N1[Node 01: 🔥 78°C / 350ppm - HIGH RISK]
-            N2[Node 02: 💧 45cm / Flood Warning]
-            N3[Node 03: ✅ 24°C / Normal]
-            N4[Node 04: 🌫️ 42°C / Smoke Detected]
+            N1["Node 01: 🔥 78°C / 350ppm - HIGH RISK"]
+            N2["Node 02: 💧 45cm / Flood Warning"]
+            N3["Node 03: ✅ 24°C / Normal"]
+            N4["Node 04: 🌫️ 42°C / Smoke Detected"]
         end
         
         subgraph Weather[Real-time Weather]
-            W1[Temperature: 28.5°C]
-            W2[Humidity: 82%]
-            W3[Wind: 3.6 m/s]
-            W4[Rain (1h): 2.5 mm]
-            W5[Condition: Light Rain]
+            W1["Temperature: 28.5°C"]
+            W2["Humidity: 82%"]
+            W3["Wind: 3.6 m/s"]
+            W4["Rain (1h): 2.5 mm"]
+            W5["Condition: Light Rain"]
         end
         
         subgraph Chart[24h Temperature Trend]
-            C1[35°C ┼──╔══╗────]
-            C2[30°C ─╔═╝  ╚═╗──]
-            C3[25°C ═╝      ╚═╗]
-            C4[00:00    12:00    23:59]
+            C1["35°C ┼──╔══╗────"]
+            C2["30°C ─╔═╝  ╚═╗──"]
+            C3["25°C ═╝      ╚═╗"]
+            C4["00:00    12:00    23:59"]
         end
         
         subgraph Alerts[Recent Alerts]
-            A1[🚨 HIGH: Fire Risk 72% at Node 01 - 10:32]
-            A2[⚠️ WARNING: Flood Risk at Node 02 - 10:30]
-            A3[ℹ️ Weather Alert: Strong wind warning]
+            A1["🚨 HIGH: Fire Risk 72% at Node 01 - 10:32"]
+            A2["⚠️ WARNING: Flood Risk at Node 02 - 10:30"]
+            A3["ℹ️ Weather Alert: Strong wind warning"]
         end
     end
 
@@ -1142,24 +1147,24 @@ graph TD
 ```mermaid
 graph TD
     subgraph Mobile[Mobile App Interface]
-        Header[🌲 FOREST SENTINEL]
+        Header["🌲 FOREST SENTINEL"]
         
-        Alert[🔴 HIGH FIRE RISK<br>Node 01 - 72%<br>10:32 AM]
+        Alert["🔴 HIGH FIRE RISK<br>Node 01 - 72%<br>10:32 AM"]
         
         subgraph AI_Summary[AI Summary]
-            A1[🔥 Fire Risk: HIGH (72%)]
-            A2[🌊 Flood Risk: LOW (15%)]
-            A3[⚠️ Anomaly: None]
-            A4[🌤️ Weather: 28°C, 82%]
+            A1["🔥 Fire Risk: HIGH (72%)"]
+            A2["🌊 Flood Risk: LOW (15%)"]
+            A3["⚠️ Anomaly: None"]
+            A4["🌤️ Weather: 28°C, 82%"]
         end
         
         subgraph Node_List[Critical Nodes]
-            L1[01 🔥 78° 3.7V - HIGH]
-            L2[02 💧 45cm 4.1V - FLOOD]
-            L3[06 ⚠️ 25° 3.2V - LOW BAT]
+            L1["01 🔥 78° 3.7V - HIGH"]
+            L2["02 💧 45cm 4.1V - FLOOD"]
+            L3["06 ⚠️ 25° 3.2V - LOW BAT"]
         end
         
-        Footer[📊 Charts<br>⚙️ Settings<br>🔔 Alerts]
+        Footer["📊 Charts<br>⚙️ Settings<br>🔔 Alerts"]
     end
 
     Mobile --> Alert
