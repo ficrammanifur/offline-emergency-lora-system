@@ -1,4 +1,4 @@
-Berikut adalah file `README.md` yang telah diperbaiki dengan mengubah semua diagram ASCII menjadi diagram **Mermaid** yang lebih interaktif dan mudah dipahami, serta dengan peningkatan tata letak agar lebih modern dan informatif.
+Maaf atas kesalahan sebelumnya. Berikut adalah file `README.md` yang telah diperbaiki sepenuhnya dengan diagram Mermaid yang sudah dikoreksi dan siap untuk diretas di GitHub.
 
 ```markdown
 <div align="center">
@@ -49,28 +49,35 @@ Berikut adalah arsitektur sistem yang menunjukkan alur data dari sensor di hutan
 
 ```mermaid
 graph TD
-    subgraph "🌲 Forest Area (Remote)"
-        A[Client Node #01<br>ESP32 + Sensors] --> L[(LoRa 868/915 MHz)]
-        B[Client Node #02<br>ESP32 + Sensors] --> L
-        C[Client Node #03<br>ESP32 + Sensors] --> L
+    subgraph A[🌲 Forest Area Remote]
+        direction TB
+        C1[Client Node 01<br>ESP32 + Sensors]
+        C2[Client Node 02<br>ESP32 + Sensors]
+        C3[Client Node 03<br>ESP32 + Sensors]
     end
 
-    subgraph "🏕️ Base Camp (Monitoring Post)"
-        L --> D[Master Gateway<br>ESP32 LoRa Receiver]
-        D --> E[Backend Server<br>Flask + SQLite]
-        E --> F[Web Dashboard<br>Real-time Charts]
+    subgraph B[🏕️ Base Camp Monitoring Post]
+        direction TB
+        MG[Master Gateway<br>ESP32 LoRa Receiver]
+        BE[Backend Server<br>Flask + SQLite]
+        WD[Web Dashboard<br>Real-time Charts]
     end
 
-    D --> G[(SD Card Backup)]
-    E --> H[Alert System<br>Notifications]
+    C1 -- LoRa 868/915 MHz --> MG
+    C2 -- LoRa 868/915 MHz --> MG
+    C3 -- LoRa 868/915 MHz --> MG
+    
+    MG -- Data via WiFi --> BE
+    BE -- WebSocket --> WD
+    MG --> SD[(SD Card Backup)]
+    BE --> AL[Alert System Notifications]
 
-    style A fill:#c7e9c0,stroke:#2e7d32
-    style B fill:#c7e9c0,stroke:#2e7d32
-    style C fill:#c7e9c0,stroke:#2e7d32
-    style D fill:#ffecb3,stroke:#ff6f00
-    style E fill:#bbdefb,stroke:#0d47a1
-    style F fill:#d1c4e9,stroke:#4a148c
-    style L fill:#fff,stroke:#333
+    style C1 fill:#c7e9c0,stroke:#2e7d32,color:#000
+    style C2 fill:#c7e9c0,stroke:#2e7d32,color:#000
+    style C3 fill:#c7e9c0,stroke:#2e7d32,color:#000
+    style MG fill:#ffecb3,stroke:#b26a00,color:#000
+    style BE fill:#bbdefb,stroke:#0d47a1,color:#000
+    style WD fill:#d1c4e9,stroke:#4a148c,color:#fff
 ```
 
 ---
@@ -103,22 +110,19 @@ graph TD
 
 ## 🔌 Wiring Diagram
 
-Diagram pengkabelan untuk Client Node dan Master Gateway.
-
 ### Client Node
 
 ```mermaid
-graph TD
-    subgraph ESP32-S3[ESP32-S3 Board]
-        direction TB
+graph LR
+    subgraph ESP32_S3[ESP32-S3 Board]
         Pins[GPIO Pins]
     end
 
     subgraph Sensors[Sensors]
-        MQ2[MQ-2 Gas Sensor]
-        SW420[SW-420 Vibration]
-        Water[Water Level Sensor]
-        INMP[INMP441 Microphone]
+        MQ2[MQ-2 Gas<br>A0]
+        SW420[SW-420 Vibration<br>DO]
+        Water[Water Level<br>A0]
+        INMP[INMP441 Mic<br>WS/SCK/SD]
     end
 
     subgraph LoRa[LoRa Module RFM95W]
@@ -136,43 +140,43 @@ graph TD
         SOLAR[Solar Panel 5V]
     end
 
-    ESP32-S3 -- GPIO5 --> NSS
-    ESP32-S3 -- GPIO18 --> SCK
-    ESP32-S3 -- GPIO19 --> MISO
-    ESP32-S3 -- GPIO23 --> MOSI
-    ESP32-S3 -- GPIO14 --> RST
-    ESP32-S3 -- GPIO26 --> DIO0
+    ESP32_S3 -- GPIO5 --> NSS
+    ESP32_S3 -- GPIO18 --> SCK
+    ESP32_S3 -- GPIO19 --> MISO
+    ESP32_S3 -- GPIO23 --> MOSI
+    ESP32_S3 -- GPIO14 --> RST
+    ESP32_S3 -- GPIO26 --> DIO0
 
-    ESP32-S3 -- GPIO34 --> MQ2
-    ESP32-S3 -- GPIO27 --> SW420
-    ESP32-S3 -- GPIO32 --> Water
-    ESP32-S3 -- GPIO25 --> INMP
+    ESP32_S3 -- GPIO34 --> MQ2
+    ESP32_S3 -- GPIO27 --> SW420
+    ESP32_S3 -- GPIO32 --> Water
+    ESP32_S3 -- GPIO25 --> INMP
 
     BATT --> CHARGER
     SOLAR --> CHARGER
-    CHARGER --> ESP32-S3
+    CHARGER --> ESP32_S3
 
-    style ESP32-S3 fill:#f9f,stroke:#333,stroke-width:2px
-    style Sensors fill:#ccf,stroke:#333,stroke-width:2px
-    style LoRa fill:#cfc,stroke:#333,stroke-width:2px
-    style Power fill:#fcf,stroke:#333,stroke-width:2px
+    style ESP32_S3 fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style Sensors fill:#ccf,stroke:#333,stroke-width:2px,color:#000
+    style LoRa fill:#cfc,stroke:#333,stroke-width:2px,color:#000
+    style Power fill:#fcf,stroke:#333,stroke-width:2px,color:#000
 ```
 
 ### Master Gateway
 
 ```mermaid
-graph TD
+graph LR
     subgraph ESP32[ESP32 Board]
         Pins[GPIO Pins]
     end
 
-    subgraph LoRa[LoRa Module RFM95W]
-        NSS[NSS]
-        SCK[SCK]
-        MISO[MISO]
-        MOSI[MOSI]
-        RST[RST]
-        DIO0[DIO0]
+    subgraph LoRa_M[LoRa Module RFM95W]
+        NSS_M[NSS]
+        SCK_M[SCK]
+        MISO_M[MISO]
+        MOSI_M[MOSI]
+        RST_M[RST]
+        DIO0_M[DIO0]
     end
 
     subgraph SD[SD Card Module]
@@ -182,18 +186,18 @@ graph TD
         MISO_SD[MISO]
     end
 
-    subgraph LED[LED Indicator]
+    subgraph LED[LED Indicators]
         RED[Red LED]
         GREEN[Green LED]
         BLUE[Blue LED]
     end
 
-    ESP32 -- GPIO5 --> NSS
-    ESP32 -- GPIO18 --> SCK
-    ESP32 -- GPIO19 --> MISO
-    ESP32 -- GPIO23 --> MOSI
-    ESP32 -- GPIO14 --> RST
-    ESP32 -- GPIO26 --> DIO0
+    ESP32 -- GPIO5 --> NSS_M
+    ESP32 -- GPIO18 --> SCK_M
+    ESP32 -- GPIO19 --> MISO_M
+    ESP32 -- GPIO23 --> MOSI_M
+    ESP32 -- GPIO14 --> RST_M
+    ESP32 -- GPIO26 --> DIO0_M
 
     ESP32 -- GPIO4 --> CS
     ESP32 -- GPIO18 --> SCK_SD
@@ -204,17 +208,15 @@ graph TD
     ESP32 -- GPIO13 --> GREEN
     ESP32 -- GPIO27 --> BLUE
 
-    style ESP32 fill:#f9f,stroke:#333,stroke-width:2px
-    style LoRa fill:#cfc,stroke:#333,stroke-width:2px
-    style SD fill:#ccf,stroke:#333,stroke-width:2px
-    style LED fill:#fcf,stroke:#333,stroke-width:2px
+    style ESP32 fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style LoRa_M fill:#cfc,stroke:#333,stroke-width:2px,color:#000
+    style SD fill:#ccf,stroke:#333,stroke-width:2px,color:#000
+    style LED fill:#fcf,stroke:#333,stroke-width:2px,color:#000
 ```
 
 ---
 
 ## 📡 Communication Flow
-
-Protokol komunikasi dari sensor hingga ke dashboard.
 
 ### 📦 **Data Packet Format**
 
@@ -230,20 +232,20 @@ Protokol komunikasi dari sensor hingga ke dashboard.
 
 ```mermaid
 sequenceDiagram
-    participant Sensor as Sensor Trigger
-    participant Client as Client ESP32
-    participant Master as Master ESP32
-    participant Backend as Backend Flask
-    participant Dashboard as Dashboard UI
+    participant S as Sensor Trigger
+    participant C as Client ESP32
+    participant M as Master ESP32
+    participant B as Backend Flask
+    participant D as Dashboard UI
 
-    Sensor->>Client: 1. Wake-up Interrupt
-    Client->>Client: 2. Read Sensors (100ms)
-    Client->>Master: 3. LoRa TX (500ms)<br/>Packet: "01|FIRE|78|350|3.4"
-    Master->>Master: 4. Validate Packet
-    Master->>Backend: 5. HTTP POST /api/data
-    Backend->>Backend: 6. Store in SQLite
-    Backend->>Dashboard: 7. WebSocket Broadcast
-    Client->>Client: 8. Return to Deep Sleep
+    S->>C: 1. Wake-up Interrupt
+    C->>C: 2. Read Sensors (100ms)
+    C->>M: 3. LoRa TX (500ms)<br>Packet: "01|FIRE|78|350|3.4"
+    M->>M: 4. Validate Packet
+    M->>B: 5. HTTP POST /api/data
+    B->>B: 6. Store in SQLite
+    B-->>D: 7. WebSocket Broadcast
+    C->>C: 8. Return to Deep Sleep
 ```
 
 ### 📡 **LoRa Configuration**
@@ -266,25 +268,27 @@ sequenceDiagram
 ```mermaid
 gantt
     title Power Consumption Over Time
-    dateFormat HH:mm
+    dateFormat HH:mm:ss
     axisFormat %H:%M
     
     section Deep Sleep (10μA)
-    Deep Sleep :done, ds1, 00:00, 15m
-    Deep Sleep :ds2, after ds1, 15m
-    Deep Sleep :ds3, after ds2, 15m
+    Deep Sleep 1 :done, ds1, 00:00:00, 15m
+    Deep Sleep 2 :done, ds2, after ds1, 15m
 
     section Wake & Sense (80mA)
-    Wake Up :active, w1, 00:15, 100ms
+    Wake Up 1 :active, w1, 00:15:00, 100ms
     
     section Transmit (80mA)
-    LoRa TX :active, t1, 00:15:01, 500ms
+    LoRa TX 1 :active, t1, 00:15:01, 500ms
+
+    section Deep Sleep (10μA)
+    Deep Sleep 3 :done, ds3, after t1, 15m
 
     section Wake & Sense (80mA)
-    Wake Up :w2, 00:30, 100ms
+    Wake Up 2 :active, w2, 00:30:00, 100ms
     
     section Transmit (80mA)
-    LoRa TX :t2, 00:30:01, 500ms
+    LoRa TX 2 :active, t2, 00:30:01, 500ms
 ```
 
 ### ⚡ **Power States**
@@ -333,9 +337,9 @@ graph TD
     end
 
     subgraph RoutesDetail[API Endpoints]
-        D1[/api/data - POST/GET]
-        D2[/api/nodes - GET/PUT]
-        D3[/api/alerts - GET/PATCH]
+        D1["/api/data (POST/GET)"]
+        D2["/api/nodes (GET/PUT)"]
+        D3["/api/alerts (GET/PATCH)"]
     end
 
     subgraph WebSocket[WebSocket Events]
@@ -354,16 +358,22 @@ graph TD
     Flask --> WebSocket
     Flask --> Database
 
-    Routes --> D1 & D2 & D3
-    WS --> W1 & W2 & W3
-    DB --> T1 & T2 & T3
+    Routes --> D1
+    Routes --> D2
+    Routes --> D3
+    WS --> W1
+    WS --> W2
+    WS --> W3
+    DB --> T1
+    DB --> T2
+    DB --> T3
 
     Dashboard[Web Dashboard HTML/JS] --> WS
     Master[Master Gateway] --> Routes
 
-    style Flask fill:#bbdefb,stroke:#0d47a1
-    style Dashboard fill:#d1c4e9,stroke:#4a148c
-    style Master fill:#ffecb3,stroke:#ff6f00
+    style Flask fill:#bbdefb,stroke:#0d47a1,color:#000
+    style Dashboard fill:#d1c4e9,stroke:#4a148c,color:#000
+    style Master fill:#ffecb3,stroke:#b26a00,color:#000
 ```
 
 ### 📊 **Database Schema (ERD)**
@@ -703,12 +713,12 @@ graph TD
     end
 
     subgraph NodeGrid[6-Node Status Display]
-        N1[Node 01: 🔥 FIRE<br>78°C / 350ppm<br>Battery: 3.7V]
-        N2[Node 02: 💧 FLOOD<br>45cm / 30cm<br>Battery: 4.1V]
-        N3[Node 03: 🌊 NORMAL<br>24°C / 65%<br>Battery: 3.9V]
-        N4[Node 04: 🌫️ SMOKE<br>42°C / 120ppm<br>Battery: 4.0V]
-        N5[Node 05: 🟢 OK<br>22°C / 1013hPa<br>Battery: 4.2V]
-        N6[Node 06: ⚠️ LOW BAT<br>25°C / 68%<br>Battery: 3.2V]
+        N1["Node 01: 🔥 FIRE<br>78°C / 350ppm<br>Battery: 3.7V"]
+        N2["Node 02: 💧 FLOOD<br>45cm / 30cm<br>Battery: 4.1V"]
+        N3["Node 03: 🌊 NORMAL<br>24°C / 65%<br>Battery: 3.9V"]
+        N4["Node 04: 🌫️ SMOKE<br>42°C / 120ppm<br>Battery: 4.0V"]
+        N5["Node 05: 🟢 OK<br>22°C / 1013hPa<br>Battery: 4.2V"]
+        N6["Node 06: ⚠️ LOW BAT<br>25°C / 68%<br>Battery: 3.2V"]
     end
 
     subgraph AlertLog[Recent Alerts]
@@ -816,11 +826,11 @@ of this software and associated documentation files...
 
 ```
 ╔══════════════════════════════════════════════════════════════════════════════════╗
-║                                                                                  ║
-║     🌲 FOREST SENTINEL LORA SYSTEM - Protecting Forests with Technology          ║
-║                                                                                  ║
-║     ⭐ Star us on GitHub! · 🐛 Report Bug · 📫 Request Feature                   ║
-║                                                                                  ║
+║                                                                                   ║
+║     🌲 FOREST SENTINEL LORA SYSTEM - Protecting Forests with Technology         ║
+║                                                                                   ║
+║     ⭐ Star us on GitHub! · 🐛 Report Bug · 📫 Request Feature                  ║
+║                                                                                   ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 ```
 
