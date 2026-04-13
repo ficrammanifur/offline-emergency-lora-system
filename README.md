@@ -1,21 +1,18 @@
 <div align="center">
 
-# 🌲 FOREST SENTINEL LORA SYSTEM
+# 🌲 FOREST SENTINEL: Swarm Intelligence Monitoring System
 
-**Long-Range Wireless Environmental Monitoring & Emergency Detection for Remote Forest Areas**
+**Next-Gen Environmental Monitoring & Emergency SAR System powered by LoRa, MiroFish AI, and Solar Energy**
 
-[![Last Commit](https://img.shields.io/badge/last_update-7_Mar_2026-brightgreen?style=for-the-badge)](https://github.com/forest-sentinel/lora-system)
-[![Language](https://img.shields.io/badge/language-C%2B%2B%20%7C%20Python-orange?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://cplusplus.com/)
-[![Platform](https://img.shields.io/badge/platform-ESP32-red?style=for-the-badge&logo=espressif&logoColor=white)](https://www.espressif.com/)
-[![RTOS](https://img.shields.io/badge/RTOS-FreeRTOS-green?style=for-the-badge)](https://www.freertos.org/)
-[![LoRa](https://img.shields.io/badge/communication-LoRa-blue?style=for-the-badge)](https://lora-alliance.org/)
-[![AI](https://img.shields.io/badge/AI-Predictive%20ML-orange?style=for-the-badge)](https://scikit-learn.org/)
-[![Weather](https://img.shields.io/badge/weather-API%20Integrated-9cf?style=for-the-badge)](https://openweathermap.org/)
-[![Backend](https://img.shields.io/badge/backend-Flask-black?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
-[![Power](https://img.shields.io/badge/power-Deep%20Sleep%20Optimized-green?style=for-the-badge)](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/system/sleep_modes.html)
-[![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
+[![Last Commit](https://img.shields.io/badge/last_update-14_Apr_2026-brightgreen?style=for-the-badge)](https://github.com/ficrammanifur/-Forest-Sentinel-Dashboard)
+[![Client](https://img.shields.io/badge/Client-Arduino%20Nano-blue?style=for-the-badge&logo=arduino&logoColor=white)](https://www.arduino.cc/)
+[![Master](https://img.shields.io/badge/Master-ESP32-red?style=for-the-badge&logo=espressif&logoColor=white)](https://www.espressif.com/)
+[![AI](https://img.shields.io/badge/AI-MiroFish%20Swarm-orange?style=for-the-badge)](https://github.com/666ghj/MiroFish)
+[![Power](https://img.shields.io/badge/Power-Solar%20Harvesting-yellow?style=for-the-badge)](https://en.wikipedia.org/wiki/Energy_harvesting)
+[![LoRa](https://img.shields.io/badge/communication-LoRa%20433MHz-blue?style=for-the-badge)](https://lora-alliance.org/)
+[![Maps](https://img.shields.io/badge/Mapping-Google%20Maps%20API-green?style=for-the-badge&logo=googlemaps&logoColor=white)](https://developers.google.com/maps)
 
-*Sistem monitoring darurat berbasis LoRa dengan **FreeRTOS**, **AI Prediktif**, dan **Integrasi Cuaca Real-time** untuk deteksi dini kebakaran hutan, banjir, dan aktivitas seismik di area terpencil tanpa internet*
+*Sistem deteksi dini kebakaran hutan dan darurat kemanusiaan (SOS) menggunakan **Swarm Intelligence (MiroFish)**, **GPS Tracking**, dan **LoRa Mesh** untuk area tanpa sinyal seluler.*
 
 </div>
 
@@ -24,1153 +21,1179 @@
 ## 📋 Daftar Isi
 
 - [✨ Overview](#-overview)
+- [🎯 Fitur Unggulan](#-fitur-unggulan)
 - [🧠 System Architecture](#-system-architecture)
-- [🔩 Hardware](#-hardware-components)
-- [🔌 Wiring](#-wiring-diagram)
-- [📡 Communication](#-communication-flow)
-- [⚡ Power](#-power-management-strategy)
-- [💻 Backend](#-backend-architecture)
-- [🚀 How To Run](#-how-to-run)
-- [📊 Future](#-future-development)
-- [📷 Preview](#-project-preview)
+- [🔩 Hardware Components](#-hardware-components)
+- [🔌 Wiring Diagram](#-wiring-diagram)
+- [📡 Communication Protocol](#-communication-protocol)
+- [⚡ Power Management](#-power-management--green-energy)
+- [🤖 MiroFish AI Integration](#-mirofish-ai-integration)
+- [🗺️ Google Maps Dashboard](#️-google-maps-dashboard)
+- [🚀 Quick Start Guide](#-quick-start-guide)
+- [📷 Project Preview](#-project-preview)
+- [🔧 Troubleshooting](#-troubleshooting)
+- [📊 Future Development](#-future-development)
+- [📝 License](#-license)
 
 ---
 
 ## ✨ Overview
 
-**Forest Sentinel** adalah sistem monitoring lingkungan mandiri yang dirancang khusus untuk **area hutan terpencil** tanpa akses internet. Sistem ini menggabungkan teknologi **LoRa** untuk komunikasi jarak jauh (hingga 10km) dengan strategi **deep sleep** ultra-hemat daya yang memungkinkan operasi berbulan-bulan hanya dengan baterai.
+**Forest Sentinel** adalah solusi monitoring hutan mandiri yang menggabungkan ketangguhan *hardware* lapangan dengan kecerdasan simulasi digital (MiroFish AI). Sistem ini tidak hanya memantau api, tetapi juga bertindak sebagai **Panic Button (SOS)** bagi orang yang tersesat di hutan, dengan transmisi koordinat GPS secara *real-time* ke dashboard basecamp.
 
-### 🎯 **Tujuan Utama**
-- 🔥 Deteksi dini kebakaran hutan melalui sensor asap dan suhu
-- 🌊 Peringatan dini banjir di daerah aliran sungai
-- 📡 Monitoring aktivitas seismik untuk potensi tanah longsor
-- 📊 Visualisasi real-time melalui dashboard lokal
+### Mengapa Arduino Nano untuk Client?
+- **Efisiensi Daya Ekstrim:** Konsumsi lebih rendah dari ESP32
+- **Stabilitas Analog:** ADC lebih bersih untuk sensor MQ-2, Soil Moisture
+- **Biaya Efektif:** 1/3 harga ESP32, ideal untuk 100+ node
+- **Solar Friendly:** Bekerja sempurna dengan TP4056 + 18650
+
+---
+
+## 🎯 Fitur Unggulan
+
+| Fitur | Deskripsi | Status |
+|-------|-----------|--------|
+| **Hybrid System** | Arduino Nano (Client) + ESP32 (Master) | ✅ Implemented |
+| **MiroFish AI Engine** | Simulasi agen cerdas untuk prediksi risiko | ✅ Implemented |
+| **Panic Button SOS** | Tombol darurat dengan GPS tracking | ✅ Implemented |
+| **Green Energy** | Solar panel 5V + TP4056 + BMS 18650 | ✅ Implemented |
+| **LoRa Mesh** | Komunikasi multi-hop hingga 10km | 🚧 In Progress |
+| **Google Maps Integration** | Pelacakan lokasi node real-time | ✅ Implemented |
+| **WiFi Manager** | Captive portal untuk konfigurasi mudah | ✅ Implemented |
+| **MQTT Bridge** | Koneksi ke broker HiveMQ Cloud | ✅ Implemented |
 
 ---
 
 ## 🧠 System Architecture
 
-### Diagram Blok Sistem dengan RTOS, AI & Weather API
+### Diagram Blok Sistem Lengkap
 
 ```mermaid
 graph TD
-    subgraph A[🌲 Forest Area Remote]
+    subgraph CLIENT[🌲 CLIENT NODE - Deep Forest]
         direction TB
-        C1[Client Node 01<br>ESP32 + Sensors + FreeRTOS]
-        C2[Client Node 02<br>ESP32 + Sensors + FreeRTOS]
-        C3[Client Node 03<br>ESP32 + Sensors + FreeRTOS]
+        Nano[Arduino Nano V3<br>Atmega328P]
         
-        subgraph RTOS1[FreeRTOS Tasks - Core 0 & 1]
-            T1[Task: Sensor Reading<br>Core 0 - Priority 2]
-            T2[Task: Power Management<br>Core 0 - Priority 1]
-            T3[Task: LoRa Communication<br>Core 1 - Priority 3]
-            Q[(Ring Buffer Queue)]
-            T1 --> Q --> T3
+        subgraph Sensors[Sensors Array]
+            DHT[DHT22<br>Temp/Humidity]
+            MQ2[MQ-2<br>Gas/Smoke]
+            VIB[SW-420<br>Vibration]
+            LDR[Light Sensor]
+            SOIL[Soil Moisture]
         end
+        
+        GPS[NEO-6M GPS Module]
+        SOS[Panic Button<br>Digital Input]
+        SOLAR[Solar Panel 5V 220mA]
+        TP4056[TP4056 Charger]
+        BATT[Li-ion 18650<br>3.7V 2600mAh]
+        LORA1[LoRa Ra-02<br>SX1278 433MHz]
+        
+        SOLAR --> TP4056
+        TP4056 --> BATT
+        BATT --> Nano
+        Nano --> Sensors & GPS & SOS
+        Nano --> LORA1
     end
 
-    subgraph B[🏕️ Base Camp Monitoring Post]
+    subgraph MASTER[🏕️ GATEWAY MASTER - Basecamp]
         direction TB
-        MG[Master Gateway<br>ESP32 LoRa Receiver]
-        BE[Backend Server<br>Flask + SQLite]
-        WD[Web Dashboard<br>Real-time Charts]
+        ESP32[ESP32-WROOM-32<br>Dual Core]
+        LORA2[LoRa Ra-02<br>SX1278 433MHz]
+        OLED[OLED SSD1306<br>128x64 I2C]
+        WM[WiFi Manager<br>Captive Portal]
         
-        subgraph AI[AI Prediction Engine]
-            P1[Random Forest<br>Fire Risk]
-            P2[Isolation Forest<br>Anomaly Detection]
-            P3[Weather Data<br>Integration]
-        end
-        
-        subgraph Weather[Weather API]
-            W1[OpenWeatherMap<br>Temp, Humidity, Wind, Rain]
-        end
+        LORA2 --> ESP32
+        ESP32 --> OLED & WM
     end
 
-    C1 -- LoRa 868/915 MHz --> MG
-    C2 -- LoRa --> MG
-    C3 -- LoRa --> MG
-    
-    MG -- HTTP POST --> BE
-    BE --> AI
-    BE -- API Call --> Weather
-    BE -- WebSocket --> WD
-    MG --> SD[(SD Card Backup)]
-    BE --> AL[Alert System Notifications]
+    subgraph CLOUD[☁️ CLOUD & DASHBOARD]
+        direction TB
+        MQTT[MQTT Broker<br>HiveMQ Cloud]
+        MF[MiroFish AI Engine<br>Swarm Intelligence]
+        MAPS[Google Maps API<br>Real-time Tracking]
+        WEATHER[Open-Meteo API<br>Local Forecast]
+        DASH[Web Dashboard<br>GitHub Pages]
+        
+        ESP32 -- WiFi/MQTT --> MQTT
+        MQTT --> MF
+        MF --> MAPS
+        WEATHER --> MF
+        MF --> DASH
+    end
 
-    style C1 fill:#c7e9c0,stroke:#2e7d32,color:#000
-    style C2 fill:#c7e9c0,stroke:#2e7d32,color:#000
-    style C3 fill:#c7e9c0,stroke:#2e7d32,color:#000
-    style MG fill:#ffecb3,stroke:#b26a00,color:#000
-    style BE fill:#bbdefb,stroke:#0d47a1,color:#000
-    style WD fill:#d1c4e9,stroke:#4a148c,color:#fff
-    style AI fill:#ffb74d,stroke:#e65100,color:#000
-    style Weather fill:#81d4fa,stroke:#01579b,color:#000
+    subgraph ALERT[🚨 ALERT SYSTEM]
+        TELE[Telegram Bot]
+        EMAIL[Email Alert]
+        BUZZ[Buzzer Master]
+    end
+
+    LORA1 -.->|433 MHz<br>10km LOS| LORA2
+    MF --> ALERT
+
+    style CLIENT fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    style MASTER fill:#ffecb3,stroke:#b26a00,stroke-width:2px
+    style CLOUD fill:#bbdefb,stroke:#0d47a1,stroke-width:2px
+    style ALERT fill:#ffcdd2,stroke:#c62828,stroke-width:2px
 ```
 
-### 🔄 **Alur Data dengan RTOS, AI & Weather API**
+### Alur Data Lengkap
 
 ```mermaid
 sequenceDiagram
-    participant S as Sensor Task (Core 0)
-    participant Q as Queue (Ring Buffer)
-    participant L as LoRa Task (Core 1)
-    participant G as Gateway
-    participant B as Backend
-    participant W as Weather API
-    participant A as AI Engine
+    participant N as Arduino Nano
+    participant L as LoRa RF
+    participant E as ESP32 Master
+    participant M as MQTT Broker
+    participant F as MiroFish AI
+    participant G as Google Maps
     participant D as Dashboard
 
-    loop Every 15 seconds
-        S->>S: Read Sensors (100ms)
-        S->>Q: xQueueSend(sensorData)
+    loop Every 5 seconds
+        N->>N: Baca DHT22, MQ-2, VIB, LDR, Soil
+        N->>N: Baca GPS (lat/long)
+        N->>N: Cek SOS Button
+        
+        N->>L: Kirim struct SensorPacket
+        Note over L: 32 bytes payload
+        L-->>E: LoRa Transmit (433MHz)
     end
 
-    loop Continuously
-        Q->>L: xQueueReceive(data)
-        L->>L: Format LoRa Packet
-        L->>G: LoRa TX (500ms)
-    end
-
-    G->>B: HTTP POST /api/data
-    B->>B: Store in DB
+    E->>E: Parse packet
+    E->>OLED: Update display
     
-    par Weather Integration
-        B->>W: GET weather data (every 10min)
-        W-->>B: Return temp, humidity, wind, rain
-        B->>B: Store weather data
-    and AI Prediction
-        B->>B: Load latest sensor + weather data
-        B->>A: Predict Fire/Flood Risk
-        A-->>B: Risk Score + Anomaly Detection
-        B->>B: Store prediction
+    alt MQTT Connected
+        E->>M: Publish to "forest/data"
+        M-->>F: Trigger AI Engine
+        F->>F: Run Swarm Simulation
+        F->>G: Update node location
+        F-->>D: Push prediction result
+        D->>D: Render map & charts
+    else MQTT Disconnected
+        E->>E: Store in SD/Queue
     end
 
-    B-->>D: WebSocket Broadcast (new data + risk)
-    D->>D: Update Charts & Alerts
+    alt SOS Button Pressed
+        N-->>E: SOS Flag = true
+        E->>M: Priority Message
+        M-->>F: Trigger Emergency
+        F->>D: Show RED marker on map
+        F->>A: Send Telegram Alert
+    end
 ```
 
 ---
 
 ## 🔩 Hardware Components
 
-### 📦 **Client Node (Sensor Unit)**
+### 📦 **Client Node (The Scout) - Arduino Nano Based**
+
+| Komponen | Spesifikasi | Fungsi | Harga Estimasi |
+|----------|-------------|--------|----------------|
+| **Arduino Nano V3** | ATmega328P, 16MHz, 32KB Flash | Kontrol utama, pembacaan sensor | Rp 60.000 |
+| **LoRa Ra-02** | SX1278, 433MHz, +20dBm | Komunikasi jarak jauh (5-10km) | Rp 120.000 |
+| **GPS NEO-6M** | U-blox, 50 channels, 2.5m accuracy | Tracking posisi node | Rp 150.000 |
+| **DHT22** | -40~80°C, 0-100% RH | Suhu & kelembaban | Rp 50.000 |
+| **MQ-2** | LPG, Smoke, CO (300-10000ppm) | Deteksi asap kebakaran | Rp 35.000 |
+| **SW-420** | Digital output, LM393 comparator | Deteksi getaran tanah | Rp 15.000 |
+| **Soil Moisture** | Analog, capacitive | Kelembaban tanah | Rp 20.000 |
+| **LDR** | 5mm, GL5528 | Intensitas cahaya | Rp 3.000 |
+| **Solar Panel** | 5V 220mA (1.1W) | Pengisian daya | Rp 50.000 |
+| **TP4056** | 1A charging, overcharge protection | Manajemen baterai | Rp 10.000 |
+| **Baterai 18650** | 3.7V 2600mAh, Li-ion | Penyimpanan energi | Rp 50.000 |
+| **Push Button** | 6x6x5mm | Tombol SOS | Rp 2.000 |
+| **Total** | - | - | **Rp 565.000** |
+
+### 🖥️ **Master Gateway (The Brain) - ESP32 Based**
 
 | Komponen | Spesifikasi | Fungsi |
 |----------|-------------|--------|
-| **ESP32-S3** | Xtensa® 32-bit LX7, Dual-core | Kontrol utama, menjalankan FreeRTOS tasks |
-| **RFM95W LoRa** | 868/915 MHz, +20dBm | Komunikasi jarak jauh (10km LOS) |
-| **MQ-2 Gas Sensor** | LPG, Smoke, CO | Deteksi asap kebakaran |
-| **SW-420 Vibration** | Digital output | Deteksi getaran tanah |
-| **Water Level Sensor** | Analog, 0-4.5cm | Monitoring ketinggian air |
-| **INMP441** | I2S, -26dBFS | Rekaman suara untuk analisis |
-| **Battery** | 3.7V LiPo 2000mAh | Sumber daya utama |
-| **Solar Charger** | TP4056 + 5V panel | Pengisian daya otomatis |
-
-### 🖥️ **Master Gateway**
-
-| Komponen | Spesifikasi | Fungsi |
-|----------|-------------|--------|
-| **ESP32** | Dual-core, WiFi | Gateway utama, menerima LoRa |
-| **RFM95W LoRa** | 868/915 MHz | Penerima data dari client |
-| **Micro SD Card** | SPI interface | Backup data lokal |
-| **LED Indicator** | RGB | Status indikator |
+| **ESP32-WROOM-32** | Dual-core Xtensa LX6, 520KB SRAM | Gateway utama, WiFi, FreeRTOS |
+| **LoRa Ra-02** | SX1278, 433MHz | Penerima data dari client |
+| **OLED SSD1306** | 128x64, I2C | Status display (IP, MQTT, Node count) |
+| **LED RGB** | Common cathode | Indikator status |
 
 ---
 
 ## 🔌 Wiring Diagram
 
-### Client Node
+### Client Node (Arduino Nano)
 
 ```mermaid
 graph LR
-    subgraph ESP32_S3[ESP32-S3 Board]
-        Pins[GPIO Pins]
+    subgraph NANO[Arduino Nano V3]
+        direction TB
+        A0[Analog Pin A0]
+        A1[Analog Pin A1]
+        A2[Analog Pin A2]
+        A3[Analog Pin A3]
+        D2[Digital Pin 2]
+        D3[Digital Pin 3]
+        D4[Digital Pin 4]
+        D5[Digital Pin 5]
+        D9[Digital Pin 9]
+        D10[Digital Pin 10]
+        D11[Digital Pin 11]
+        D12[Digital Pin 12]
+        D13[Digital Pin 13]
+        5V[5V Output]
+        GND[GND]
     end
 
-    subgraph Sensors[Sensors]
-        MQ2[MQ-2 Gas<br>A0]
-        SW420[SW-420 Vibration<br>DO]
-        Water[Water Level<br>A0]
-        INMP[INMP441 Mic<br>WS/SCK/SD]
+    subgraph SENSORS[Sensors]
+        DHT22[DHT22<br>Data → D4]
+        MQ2[MQ-2<br>Analog → A0]
+        VIB[SW-420<br>DO → D3]
+        LDR[LDR<br>Analog → A1]
+        SOIL[Soil Moisture<br>Analog → A2]
+        GPS[GPS NEO-6M<br>TX → D2, RX → D3]
+        SOS[Push Button<br>D5 → GND]
     end
 
-    subgraph LoRa[LoRa Module RFM95W]
-        NSS[NSS]
-        SCK[SCK]
-        MISO[MISO]
-        MOSI[MOSI]
-        RST[RST]
-        DIO0[DIO0]
+    subgraph LORA[LoRa Ra-02]
+        NSS[NSS → D10]
+        SCK[SCK → D13]
+        MOSI[MOSI → D11]
+        MISO[MISO → D12]
+        RST[RST → D9]
+        DIO0[DIO0 → D2]
     end
 
-    subgraph Power[Power System]
-        BATT[LiPo 3.7V]
-        CHARGER[TP4056 Charger]
+    subgraph POWER[Power System]
         SOLAR[Solar Panel 5V]
+        TP4056[TP4056<br>IN+ → Solar+<br>IN- → Solar-<br>BAT+ → 18650+<br>BAT- → 18650-]
+        BATT[18650 3.7V<br>+ → Nano VIN<br>- → Nano GND]
     end
 
-    ESP32_S3 -- GPIO5 --> NSS
-    ESP32_S3 -- GPIO18 --> SCK
-    ESP32_S3 -- GPIO19 --> MISO
-    ESP32_S3 -- GPIO23 --> MOSI
-    ESP32_S3 -- GPIO14 --> RST
-    ESP32_S3 -- GPIO26 --> DIO0
+    NANO --> SENSORS
+    NANO --> LORA
+    POWER --> NANO
 
-    ESP32_S3 -- GPIO34 --> MQ2
-    ESP32_S3 -- GPIO27 --> SW420
-    ESP32_S3 -- GPIO32 --> Water
-    ESP32_S3 -- GPIO25 --> INMP
-
-    BATT --> CHARGER
-    SOLAR --> CHARGER
-    CHARGER --> ESP32_S3
-
-    style ESP32_S3 fill:#f9f,stroke:#333,stroke-width:2px,color:#000
-    style Sensors fill:#ccf,stroke:#333,stroke-width:2px,color:#000
-    style LoRa fill:#cfc,stroke:#333,stroke-width:2px,color:#000
-    style Power fill:#fcf,stroke:#333,stroke-width:2px,color:#000
+    style NANO fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style SENSORS fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    style LORA fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style POWER fill:#ffcdd2,stroke:#c62828,stroke-width:2px
 ```
 
-### Master Gateway
+### Master Gateway (ESP32)
 
 ```mermaid
 graph LR
-    subgraph ESP32[ESP32 Board]
-        Pins[GPIO Pins]
+    subgraph ESP32[ESP32 Dev Board]
+        direction TB
+        GPIO5[GPIO5]
+        GPIO14[GPIO14]
+        GPIO2[GPIO2]
+        GPIO18[GPIO18]
+        GPIO19[GPIO19]
+        GPIO23[GPIO23]
+        SDA[GPIO21 - SDA]
+        SCL[GPIO22 - SCL]
     end
 
-    subgraph LoRa_M[LoRa Module RFM95W]
-        NSS_M[NSS]
-        SCK_M[SCK]
-        MISO_M[MISO]
-        MOSI_M[MOSI]
-        RST_M[RST]
-        DIO0_M[DIO0]
+    subgraph LORA_M[LoRa Ra-02]
+        NSS_M[NSS → GPIO5]
+        RST_M[RST → GPIO14]
+        DIO0_M[DIO0 → GPIO2]
+        SCK_M[SCK → GPIO18]
+        MOSI_M[MOSI → GPIO23]
+        MISO_M[MISO → GPIO19]
     end
 
-    subgraph SD[SD Card Module]
-        CS[CS]
-        SCK_SD[SCK]
-        MOSI_SD[MOSI]
-        MISO_SD[MISO]
+    subgraph OLED[OLED SSD1306]
+        SDA_OLED[SDA → GPIO21]
+        SCL_OLED[SCL → GPIO22]
     end
 
-    subgraph LED[LED Indicators]
-        RED[Red LED]
-        GREEN[Green LED]
-        BLUE[Blue LED]
-    end
+    ESP32 --> LORA_M
+    ESP32 --> OLED
 
-    ESP32 -- GPIO5 --> NSS_M
-    ESP32 -- GPIO18 --> SCK_M
-    ESP32 -- GPIO19 --> MISO_M
-    ESP32 -- GPIO23 --> MOSI_M
-    ESP32 -- GPIO14 --> RST_M
-    ESP32 -- GPIO26 --> DIO0_M
-
-    ESP32 -- GPIO4 --> CS
-    ESP32 -- GPIO18 --> SCK_SD
-    ESP32 -- GPIO23 --> MOSI_SD
-    ESP32 -- GPIO19 --> MISO_SD
-
-    ESP32 -- GPIO12 --> RED
-    ESP32 -- GPIO13 --> GREEN
-    ESP32 -- GPIO27 --> BLUE
-
-    style ESP32 fill:#f9f,stroke:#333,stroke-width:2px,color:#000
-    style LoRa_M fill:#cfc,stroke:#333,stroke-width:2px,color:#000
-    style SD fill:#ccf,stroke:#333,stroke-width:2px,color:#000
-    style LED fill:#fcf,stroke:#333,stroke-width:2px,color:#000
+    style ESP32 fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
+    style LORA_M fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style OLED fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px
 ```
 
 ---
 
-## 📡 Communication Flow
+## 📡 Communication Protocol
 
-### 📦 **Data Packet Format**
+### LoRa Packet Structure (32 bytes)
 
-| Field | Deskripsi | Range/Contoh |
-|-------|-----------|---------------|
-| `NODE_ID` | Identitas unik node | 01, 02, 03... |
-| `TYPE` | Jenis kejadian | `FIRE`, `FLOOD`, `VIB`, `TEST` |
-| `VALUE1` | Nilai sensor utama | Suhu (°C), Ketinggian (cm) |
-| `VALUE2` | Nilai threshold/baku | Ambang batas |
-| `BATTERY` | Tegangan baterai | 3.0 - 4.2 V |
+```cpp
+struct SensorPacket {
+    float temperature;    // 4 bytes: -40°C to 80°C
+    float humidity;       // 4 bytes: 0% to 100%
+    int gas;             // 4 bytes: 0-1023 (analog)
+    int light;           // 4 bytes: 0-1023
+    int soil;            // 4 bytes: 0-1023
+    int vibration;       // 4 bytes: 0 or 1
+    bool sos;            // 1 byte: true/false
+    uint32_t nodeID;     // 4 bytes: 1-255
+    float latitude;      // 4 bytes: -90 to 90
+    float longitude;     // 4 bytes: -180 to 180
+    // Total: 33 bytes (with padding)
+} __attribute__((packed));
+```
 
-### 📡 **LoRa Configuration**
+### LoRa Configuration
 
-| Parameter | Value |
-|-----------|-------|
-| Frequency | 915 MHz (US) / 868 MHz (EU) |
-| Spreading Factor | SF12 (max range) |
-| Bandwidth | 125 kHz |
-| Coding Rate | 4/5 |
-| TX Power | +20 dBm |
-| Range | Up to 10 km (line of sight) |
+| Parameter | Value | Keterangan |
+|-----------|-------|------------|
+| Frequency | 433 MHz | Frekuensi LoRa Ra-02 |
+| Spreading Factor | SF12 | Maximum range |
+| Bandwidth | 125 kHz | Standard LoRa |
+| Coding Rate | 4/5 | Error correction |
+| TX Power | +20 dBm | Maksimum power |
+| Range (LOS) | 5-10 km | Line of sight |
+| Payload Size | 32 bytes | Struktur SensorPacket |
+
+### MQTT Topic Structure
+
+| Topic | Direction | Payload | Description |
+|-------|-----------|---------|-------------|
+| `forest/data` | Client → Broker | JSON | Data sensor normal |
+| `forest/sos` | Client → Broker | JSON | Emergency priority |
+| `forest/command` | Broker → Client | JSON | Command to node |
+| `forest/status` | Client → Broker | JSON | Node health |
 
 ---
 
-## ⚡ Power Management Strategy
+## ⚡ Power Management & Green Energy
 
-### 📊 **Power Profile - Client Node**
-
-```mermaid
-gantt
-    title Power Consumption Over Time
-    dateFormat HH:mm:ss
-    axisFormat %H:%M
-    
-    section Deep Sleep (10μA)
-    Deep Sleep 1 :done, ds1, 00:00:00, 15m
-    Deep Sleep 2 :done, ds2, after ds1, 15m
-
-    section Wake & Sense (80mA)
-    Wake Up 1 :active, w1, 00:15:00, 100ms
-    
-    section Transmit (80mA)
-    LoRa TX 1 :active, t1, 00:15:01, 500ms
-
-    section Deep Sleep (10μA)
-    Deep Sleep 3 :done, ds3, after t1, 15m
-
-    section Wake & Sense (80mA)
-    Wake Up 2 :active, w2, 00:30:00, 100ms
-    
-    section Transmit (80mA)
-    LoRa TX 2 :active, t2, 00:30:01, 500ms
-```
-
-### ⚡ **Power States**
-
-| Mode | Current | Duration | Frequency | Description |
-|------|---------|----------|-----------|-------------|
-| **Deep Sleep** | 10 μA | 15 min (default) | 99% | Semua sensor mati, RTC aktif |
-| **Wake & Sense** | 80 mA | 100 ms | Setiap 15 min | Baca sensor, tidak ada event |
-| **Transmit** | 80 mA | 500 ms | Saat event | Kirim data via LoRa |
-| **Peak** | 120 mA | 50 ms | Rare | LoRa TX + sensor bersamaan |
-
-### 🔋 **Battery Life Calculation**
-
-```
-Battery Capacity: 2000 mAh
-Daily Consumption:
-- Deep Sleep: 10μA × 23.9h = 0.239 mAh
-- Wake & Sense: 80mA × 0.1s × 96x = 0.213 mAh
-- Transmit: 80mA × 0.5s × 10x (est) = 0.111 mAh
-Total Daily: ~0.563 mAh
-
-Estimated Battery Life: 2000 mAh / 0.563 mAh per day ≈ 3,552 days ≈ 9.7 years
-* Theoretically with perfect battery. Realistically: 6-12 months with self-discharge
-```
-
----
-
-## 💻 Backend Architecture
-
-### 🏗️ **Backend Structure dengan AI & Weather Integration**
+### Solar Power System Diagram
 
 ```mermaid
 graph TD
-    subgraph Flask[Flask Application]
-        Routes[Routes]
-        WS[WebSocket SocketIO]
-        DB[(SQLite Database)]
+    subgraph DAY[☀️ Daytime - Solar Active]
+        S1[Solar Panel<br>5V 220mA] --> C1[TP4056 Charger]
+        C1 --> B1[18650 Battery<br>3.7V 2600mAh]
+        B1 --> N1[Arduino Nano<br>Active Mode: 25mA]
+        B1 --> N2[LoRa Module<br>TX: 120mA, Sleep: 2μA]
+        B1 --> N3[GPS Module<br>Active: 45mA]
+        
+        S1 -.->|Excess Power| C1
+        C1 -.->|Charging| B1
     end
 
-    subgraph RoutesDetail[API Endpoints]
-        D1["/api/data (POST/GET)"]
-        D2["/api/nodes (GET/PUT)"]
-        D3["/api/alerts (GET/PATCH)"]
-        D4["/api/predict (GET)"]
-        D5["/api/weather (GET)"]
+    subgraph NIGHT[🌙 Nighttime - Battery Mode]
+        B2[18650 Battery] --> N4[Arduino Nano<br>Deep Sleep: 6mA]
+        B2 -.->|Power Saving| N5[GPS: OFF]
+        B2 -.->|Power Saving| N6[LoRa: Sleep]
     end
 
-    subgraph WebSocket[WebSocket Events]
-        W1[connect]
-        W2[new_data]
-        W3[new_alert]
-        W4[new_prediction]
-    end
-
-    subgraph Database[Database Models]
-        T1[Nodes Table]
-        T2[Readings Table]
-        T3[Alerts Table]
-        T4[Predictions Table]
-        T5[Weather Table]
-    end
-
-    subgraph AI[AI Prediction Engine]
-        A1[Random Forest<br>Fire Risk Model]
-        A2[Isolation Forest<br>Anomaly Detector]
-        A3[Feature Engineering<br>Sensor + Weather]
-    end
-
-    subgraph Weather[Weather Integration]
-        WE[Weather Fetcher<br>APScheduler]
-        WO[OpenWeatherMap API]
-    end
-
-    Flask --> RoutesDetail
-    Flask --> WebSocket
-    Flask --> Database
-    Flask --> AI
-    Flask --> Weather
-
-    Routes --> D1 & D2 & D3 & D4 & D5
-    WS --> W1 & W2 & W3 & W4
-    DB --> T1 & T2 & T3 & T4 & T5
-    
-    WE -- Every 10 min --> WO
-    WO --> T5
-    T2 --> AI
-    T5 --> AI
-    AI --> T4
-    AI --> W4
-
-    Dashboard[Web Dashboard] --> WS
-    Master[Master Gateway] --> Routes
-
-    style Flask fill:#bbdefb,stroke:#0d47a1,color:#000
-    style AI fill:#ffb74d,stroke:#e65100,color:#000
-    style Weather fill:#81d4fa,stroke:#01579b,color:#000
-    style Dashboard fill:#d1c4e9,stroke:#4a148c,color:#000
+    style DAY fill:#fff9c4,stroke:#f57f17
+    style NIGHT fill:#bbdefb,stroke:#0d47a1
 ```
 
-### 📊 **Database Schema dengan AI & Weather Tables**
+### Power Consumption Profile
 
-```mermaid
-erDiagram
-    NODES ||--o{ READINGS : has
-    NODES ||--o{ ALERTS : has
-    READINGS ||--o{ PREDICTIONS : generates
-    
-    WEATHER ||--o{ PREDICTIONS : influences
+| Mode | Arduino Nano | LoRa | GPS | Total | Duration | Frequency |
+|------|-------------|------|-----|------|----------|-----------|
+| **Active Reading** | 25 mA | 2 μA (sleep) | 45 mA | 70 mA | 2s | Every 5s |
+| **LoRa Transmit** | 25 mA | 120 mA | 45 mA | 190 mA | 500ms | Every 5s |
+| **Deep Sleep** | 6 mA | 2 μA | OFF | 6 mA | 2.5s | Every 5s |
+| **Average** | - | - | - | **~12 mA** | - | - |
 
-    NODES {
-        int id PK
-        string node_id
-        string location
-        float battery
-        datetime last_seen
-        string status
-        datetime created_at
-    }
+### Battery Life Calculation
 
-    READINGS {
-        int id PK
-        string node_id FK
-        datetime timestamp
-        float temperature
-        float smoke_level
-        int vibration
-        float water_level
-        float battery_voltage
-    }
-
-    WEATHER {
-        int id PK
-        datetime timestamp
-        float temperature
-        float humidity
-        float wind_speed
-        float rain_1h
-        string description
-    }
-
-    PREDICTIONS {
-        int id PK
-        string node_id FK
-        int weather_id FK
-        datetime timestamp
-        float fire_risk
-        string fire_risk_category
-        float flood_risk
-        string flood_risk_category
-        float anomaly_score
-        bool anomaly_detected
-        string recommendation
-    }
-
-    ALERTS {
-        int id PK
-        string node_id FK
-        string type
-        int severity
-        string description
-        datetime timestamp
-        bool acknowledged
-    }
 ```
+Battery Capacity: 2600 mAh (18650 Li-ion)
+Daily Consumption: 12 mA × 24h = 288 mAh/day
+Solar Input: 220mA × 6h (effective) = 1320 mAh/day
 
-### 🤖 **AI Model Implementation**
+Net Gain: +1032 mAh/day (battery will maintain full charge)
+Battery-only Runtime: 2600 / 12 ≈ 216 hours ≈ 9 days
 
-```python
-# models/ai_predictor.py
-import joblib
-import numpy as np
-from sklearn.ensemble import RandomForestClassifier, IsolationForest
-
-class FireRiskPredictor:
-    def __init__(self):
-        self.model = joblib.load('models/fire_risk_model.pkl')
-        self.anomaly_detector = joblib.load('models/anomaly_detector.pkl')
-        
-    def predict(self, sensor_data, weather_data):
-        """
-        Fitur input:
-        - sensor: temperature, smoke_level, vibration, water_level
-        - weather: temp, humidity, wind_speed, rain_1h
-        - derived: temp_rate (perubahan suhu)
-        """
-        features = np.array([[
-            sensor_data['temperature'],
-            sensor_data['smoke_level'],
-            sensor_data['vibration'],
-            sensor_data['water_level'],
-            weather_data['temperature'],
-            weather_data['humidity'],
-            weather_data['wind_speed'],
-            weather_data['rain_1h'],
-            sensor_data['temp_rate']  # derived feature
-        ]])
-        
-        # Random Forest untuk fire risk (0-100%)
-        fire_risk = self.model.predict_proba(features)[0][1] * 100
-        
-        # Isolation Forest untuk anomaly detection
-        anomaly_score = self.anomaly_detector.score_samples(features)[0]
-        anomaly_detected = anomaly_score < -0.5  # threshold
-        
-        # Kategorisasi risiko
-        if fire_risk >= 70:
-            category = "HIGH"
-            recommendation = "BAHAYA: Risiko kebakaran tinggi! Segera tindak lanjuti."
-        elif fire_risk >= 40:
-            category = "MEDIUM"
-            recommendation = "WASPADA: Kondisi berpotensi kebakaran. Pantau terus."
-        else:
-            category = "LOW"
-            recommendation = "AMAN: Risiko kebakaran rendah."
-            
-        return {
-            'fire_risk': round(fire_risk, 1),
-            'fire_risk_category': category,
-            'anomaly_score': round(anomaly_score, 2),
-            'anomaly_detected': anomaly_detected,
-            'recommendation': recommendation
-        }
-```
-
-### 🌦️ **Weather Integration**
-
-```python
-# weather/fetcher.py
-import requests
-from apscheduler.schedulers.background import BackgroundScheduler
-from models import Weather
-
-class WeatherFetcher:
-    def __init__(self, app):
-        self.app = app
-        self.api_key = app.config['WEATHER_API_KEY']
-        self.city = app.config['WEATHER_CITY']
-        self.scheduler = BackgroundScheduler()
-        self.scheduler.add_job(
-            func=self.fetch_weather,
-            trigger="interval",
-            seconds=app.config['WEATHER_UPDATE_INTERVAL']
-        )
-        
-    def fetch_weather(self):
-        """Fetch weather data from OpenWeatherMap API"""
-        url = f"http://api.openweathermap.org/data/2.5/weather"
-        params = {
-            'q': self.city,
-            'appid': self.api_key,
-            'units': 'metric'  # Celsius
-        }
-        
-        try:
-            response = requests.get(url, params=params)
-            data = response.json()
-            
-            weather = Weather(
-                temperature=data['main']['temp'],
-                humidity=data['main']['humidity'],
-                wind_speed=data['wind']['speed'],
-                rain_1h=data.get('rain', {}).get('1h', 0),
-                description=data['weather'][0]['description']
-            )
-            
-            with self.app.app_context():
-                db.session.add(weather)
-                db.session.commit()
-                
-            print(f"Weather updated: {weather.temperature}°C, {weather.humidity}%")
-            
-        except Exception as e:
-            print(f"Error fetching weather: {e}")
-    
-    def start(self):
-        self.scheduler.start()
+Conclusion: Dengan solar panel, sistem dapat beroperasi INDEFINITELY
 ```
 
 ---
 
-## 🚀 How To Run
+## 🤖 MiroFish AI Integration
 
-### 📋 **Prerequisites**
+### Apa itu MiroFish?
+
+**MiroFish** adalah mesin kecerdasan berbasis *multi-agent technology* yang mensimulasikan perilaku swarm (kawanan) untuk memprediksi skenario bencana. Sistem ini bekerja dengan prinsip:
+
+1. **Graph Building:** Mengumpulkan semua data sensor dari seluruh node menjadi memori kolektif
+2. **Swarm Simulation:** Menjalankan ribuan agen cerdas (masing-masing dengan perilaku unik) untuk mensimulasikan penyebaran api, asap, dan respons lingkungan
+3. **Emergent Prediction:** Dari interaksi antar agen, muncul pola prediksi yang akurat
+4. **Report Generation:** Menghasilkan laporan risiko berbasis narasi alam
+
+### Arsitektur MiroFish
+
+```mermaid
+graph TD
+    subgraph INPUT[Input Layer]
+        S1[Real Sensor Data<br>Temp, Humidity, Gas]
+        S2[Weather API<br>Wind, Rain, Forecast]
+        S3[Historical Data<br>Fire Patterns]
+    end
+
+    subgraph MIROFISH[MiroFish Engine]
+        G[Graph Constructor<br>Build Environmental Memory]
+        
+        subgraph SWARM[Swarm Simulation]
+            A1[Agen Fire<br>1000 agents]
+            A2[Agen Smoke<br>2000 agents]
+            A3[Agen Wind<br>500 agents]
+            A4[Agen Terrain<br>100 agents]
+        end
+        
+        G --> SWARM
+        SWARM --> E[Emergence Layer<br>Pattern Recognition]
+    end
+
+    subgraph OUTPUT[Output Layer]
+        R1[Fire Risk Score<br>0-100%]
+        R2[Spread Prediction<br>Direction & Speed]
+        R3[Evacuation Zone<br>Safe area recommendation]
+        R4[Alert Level<br>Green/Yellow/Red]
+    end
+
+    INPUT --> MIROFISH
+    E --> OUTPUT
+
+    style MIROFISH fill:#ffb74d,stroke:#e65100,stroke-width:2px
+    style SWARM fill:#fff3e0,stroke:#f57c00
+```
+
+### Integrasi MiroFish dengan Dashboard
+
+```javascript
+// MiroFish API Endpoint (contoh)
+const mirofishEndpoint = "https://api.mirofish.ai/v1/predict";
+
+async function getFireRisk(nodeData, weatherData) {
+    const response = await fetch(mirofishEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            sensors: {
+                temperature: nodeData.temp,
+                humidity: nodeData.hum,
+                gas: nodeData.gas,
+                soil_moisture: nodeData.soil
+            },
+            weather: {
+                wind_speed: weatherData.wind_speed,
+                wind_direction: weatherData.wind_dir,
+                rain_1h: weatherData.rain,
+                forecast: weatherData.forecast
+            },
+            location: {
+                lat: nodeData.lat,
+                lng: nodeData.lng,
+                terrain: "forest"
+            }
+        })
+    });
+    
+    const prediction = await response.json();
+    return {
+        fire_risk: prediction.risk_score,      // 0-100
+        spread_direction: prediction.direction, // degrees
+        spread_speed: prediction.speed_kmh,     // km/h
+        alert_level: prediction.alert           // "GREEN", "YELLOW", "RED"
+    };
+}
+```
+
+---
+
+## 🗺️ Google Maps Dashboard
+
+### Dashboard Features
+
+| Feature | Description | Technology |
+|---------|-------------|------------|
+| **Real-time Node Tracking** | Semua node muncul sebagai marker dengan warna sesuai status | Google Maps JavaScript API |
+| **SOS Panic Mode** | Marker berubah menjadi merah dan berkedip saat SOS ditekan | Custom overlay |
+| **Heatmap Layer** | Visualisasi risiko kebakaran berdasarkan MiroFish prediction | Heatmap Layer API |
+| **Path Prediction** | Animasi arah penyebaran api | Polyline + Animation |
+| **Weather Overlay** | Data cuaca real-time dari Open-Meteo | Weather layer |
+| **Node Details Popup** | Klik marker untuk lihat data sensor lengkap | InfoWindow |
+
+### Dashboard Preview Structure
+
+```mermaid
+graph TD
+    subpage[Dashboard Layout]
+    
+    subpage --> H[Header: Forest Sentinel - Real-time Monitoring]
+    
+    subpage --> L[Left Panel: Node List]
+    L --> L1["🟢 Node 101 - 28°C | 45% RH<br>📍 -6.2, 106.8<br>🔥 Risk: 15%"]
+    L --> L2["🟡 Node 102 - 32°C | 38% RH<br>📍 -6.3, 106.9<br>🔥 Risk: 45%"]
+    L --> L3["🔴 Node 103 - 38°C | 29% RH<br>📍 -6.4, 107.0<br>🔥 Risk: 78%"]
+    
+    subpage --> C[Center: Google Maps]
+    C --> C1[Marker Node 101 - Green]
+    C --> C2[Marker Node 102 - Yellow]
+    C --> C3[Marker Node 103 - Red]
+    C --> C4[Heatmap Overlay - Risk Area]
+    
+    subpage --> R[Right Panel: Analytics]
+    R --> R1[📊 MiroFish Prediction<br>Fire Risk: 67% in next 2h]
+    R --> R2[🌤️ Weather: 32°C, 65%<br>Wind: 12km/h SE]
+    R --> R3[🚨 Recent Alerts<br>10:32 - Node 103 SOS]
+    
+    subpage --> B[Bottom: Time Series Chart]
+    B --> B1[Temperature Trend - Last 24h]
+    B --> B2[Smoke Level - Last 24h]
+
+    style C fill:#e8f5e9,stroke:#2e7d32
+    style R1 fill:#ffb74d,stroke:#e65100
+    style L3 fill:#ffcdd2,stroke:#c62828
+```
+
+### Live Dashboard URL
+
+👉 **https://ficrammanifur.github.io/-Forest-Sentinel-Dashboard/**
+
+Dashboard ini di-host di GitHub Pages dan terhubung ke:
+- MQTT Broker (HiveMQ Cloud) untuk data real-time
+- MiroFish API untuk prediksi AI
+- Open-Meteo API untuk data cuaca
+- Google Maps JS API untuk visualisasi
+
+---
+
+## 🚀 Quick Start Guide
+
+### Prerequisites
 
 | Component | Requirement |
 |-----------|-------------|
-| **ESP32 Development** | PlatformIO / Arduino IDE |
-| **Python** | 3.8+ with pip |
-| **LoRa Modules** | RFM95W / RFM96W |
-| **Sensors** | MQ-2, SW-420, Water Level, INMP441 |
-| **Weather API Key** | OpenWeatherMap API Key |
+| **Arduino IDE** | 1.8.19+ with ESP32 board package |
+| **Libraries** | LoRa, DHT, Adafruit_SSD1306, WiFiManager, PubSubClient |
+| **Hardware** | Arduino Nano + ESP32 + LoRa modules |
+| **Network** | WiFi for ESP32 Master |
+| **MQTT Account** | Free HiveMQ Cloud account |
 
-### 1️⃣ **Setup Client Node dengan FreeRTOS**
+### 1️⃣ Setup Client Node (Arduino Nano)
 
 ```bash
-# Clone repository
-git clone https://github.com/yourusername/forest-sentinel-lora.git
-cd forest-sentinel-lora/client
+# 1. Install Library di Arduino IDE
+#   - LoRa by Sandeep Mistry
+#   - DHT sensor library by Adafruit
+#   - ArduinoJson by Benoit Blanchon
 
-# Install dependencies via PlatformIO
-pio lib install "sandeepmistry/LoRa"
-pio lib install "adafruit/Adafruit Unified Sensor"
+# 2. Upload kode ke Arduino Nano
+#   - Board: Arduino Nano
+#   - Processor: ATmega328P (Old Bootloader)
+#   - Port: (sesuaikan dengan COM/serial kamu)
+
+# 3. Buka Serial Monitor (115200 baud)
 ```
 
+**Kode Client Nano Lengkap:**
+
 ```cpp
-// client/src/main.cpp - Implementasi FreeRTOS Tasks
-#include <Arduino.h>
-#include <freertos/FreeRTOS.h>
-#include <freertos/task.h>
-#include <freertos/queue.h>
+#include <SPI.h>
+#include <LoRa.h>
+#include <DHT.h>
+#include <SoftwareSerial.h>
+#include <TinyGPS++.h>
 
-// Struktur data sensor
-struct SensorData {
-  float temperature;
-  int smoke_level;
-  bool vibration;
-  float water_level;
-  float battery;
-};
+// ===== PIN CONFIGURATION =====
+// LoRa
+#define SCK 13
+#define MISO 12
+#define MOSI 11
+#define SS 10
+#define RST 9
+#define DIO0 2
 
-// Queue handle
-QueueHandle_t sensorQueue;
+// Sensors
+#define DHTPIN 4
+#define DHTTYPE DHT22
+#define GAS_PIN A0
+#define LDR_PIN A1
+#define SOIL_PIN A2
+#define VIB_PIN 3
+#define SOS_BUTTON 5
 
-// Task Sensor (Core 0, Priority 2)
-void sensorTask(void *pvParameters) {
-  SensorData data;
-  TickType_t lastWakeTime = xTaskGetTickCount();
-  
-  while(true) {
-    // Baca semua sensor
-    data.temperature = readTemperature();
-    data.smoke_level = readSmoke();
-    data.vibration = readVibration();
-    data.water_level = readWaterLevel();
-    data.battery = readBattery();
-    
-    // Kirim ke queue
-    xQueueSend(sensorQueue, &data, portMAX_DELAY);
-    
-    // Delay tepat 15 detik
-    vTaskDelayUntil(&lastWakeTime, pdMS_TO_TICKS(15000));
-  }
-}
+// GPS
+#define GPS_RX 2  // GPS TX ke Nano RX (pin 2)
+#define GPS_TX 3  // GPS RX ke Nano TX (pin 3)
 
-// Task LoRa (Core 1, Priority 3)
-void loraTask(void *pvParameters) {
-  SensorData data;
-  
-  while(true) {
-    // Terima data dari queue
-    if(xQueueReceive(sensorQueue, &data, portMAX_DELAY)) {
-      // Format dan kirim via LoRa
-      char packet[50];
-      sprintf(packet, "%s|%s|%.1f|%d|%.1f", 
-              NODE_ID, "DATA", data.temperature, 
-              data.smoke_level, data.battery);
-      LoRa.beginPacket();
-      LoRa.print(packet);
-      LoRa.endPacket();
-      
-      Serial.println("Packet sent: " + String(packet));
-    }
-  }
-}
+// ===== OBJECTS =====
+DHT dht(DHTPIN, DHTTYPE);
+SoftwareSerial gpsSerial(GPS_RX, GPS_TX);
+TinyGPSPlus gps;
+
+// ===== STRUCTURE =====
+struct SensorPacket {
+    float temperature;
+    float humidity;
+    int gas;
+    int light;
+    int soil;
+    int vibration;
+    bool sos;
+    uint32_t nodeID;
+    float latitude;
+    float longitude;
+} __attribute__((packed));
+
+// ===== CONFIGURATION =====
+const uint32_t NODE_ID = 101;
+const unsigned long SEND_INTERVAL = 5000;  // 5 detik
+unsigned long lastSend = 0;
 
 void setup() {
-  Serial.begin(115200);
-  
-  // Inisialisasi LoRa
-  LoRa.setPins(SS, RST, DIO0);
-  LoRa.begin(LORA_FREQUENCY);
-  
-  // Buat queue
-  sensorQueue = xQueueCreate(10, sizeof(SensorData));
-  
-  // Buat tasks
-  xTaskCreatePinnedToCore(
-    sensorTask, "Sensor", 4096, NULL, 2, NULL, 0);
-  xTaskCreatePinnedToCore(
-    loraTask, "LoRa", 4096, NULL, 3, NULL, 1);
+    Serial.begin(115200);
+    dht.begin();
+    pinMode(VIB_PIN, INPUT_PULLUP);
+    pinMode(SOS_BUTTON, INPUT_PULLUP);
+    
+    // GPS Serial
+    gpsSerial.begin(9600);
+    
+    // Inisialisasi LoRa
+    Serial.println("[INFO] Initializing LoRa...");
+    LoRa.setPins(SS, RST, DIO0);
+    
+    if (!LoRa.begin(433E6)) {
+        Serial.println("[ERROR] LoRa init failed!");
+        while (1);
+    }
+    
+    // Konfigurasi LoRa untuk range maksimum
+    LoRa.setSpreadingFactor(12);
+    LoRa.setSignalBandwidth(125E3);
+    LoRa.setCodingRate4(5);
+    LoRa.setTxPower(20, true);
+    
+    Serial.println("[INFO] LoRa Ready!");
+    Serial.print("[INFO] Node ID: "); Serial.println(NODE_ID);
 }
 
 void loop() {
-  // Kosong - semua dikelola oleh FreeRTOS
-  vTaskDelay(pdMS_TO_TICKS(1000));
+    unsigned long now = millis();
+    
+    if (now - lastSend >= SEND_INTERVAL) {
+        SensorPacket data;
+        
+        // 1. Baca Sensor
+        data.temperature = dht.readTemperature();
+        data.humidity = dht.readHumidity();
+        data.gas = analogRead(GAS_PIN);
+        data.light = analogRead(LDR_PIN);
+        data.soil = analogRead(SOIL_PIN);
+        data.vibration = digitalRead(VIB_PIN);
+        data.sos = (digitalRead(SOS_BUTTON) == LOW);
+        data.nodeID = NODE_ID;
+        
+        // 2. Baca GPS (jika ada fix)
+        while (gpsSerial.available() > 0) {
+            gps.encode(gpsSerial.read());
+        }
+        
+        if (gps.location.isValid()) {
+            data.latitude = gps.location.lat();
+            data.longitude = gps.location.lng();
+        } else {
+            data.latitude = 0;
+            data.longitude = 0;
+        }
+        
+        // 3. Kirim via LoRa
+        LoRa.beginPacket();
+        LoRa.write((uint8_t*)&data, sizeof(data));
+        LoRa.endPacket();
+        
+        // 4. Log ke Serial
+        Serial.println("=================================");
+        Serial.println("[SENT] Sensor Packet");
+        Serial.print("  Node ID: "); Serial.println(data.nodeID);
+        Serial.print("  Temp: "); Serial.print(data.temperature); Serial.println(" °C");
+        Serial.print("  Humidity: "); Serial.print(data.humidity); Serial.println(" %");
+        Serial.print("  Gas: "); Serial.println(data.gas);
+        Serial.print("  Soil: "); Serial.println(data.soil);
+        Serial.print("  Vibration: "); Serial.println(data.vibration);
+        Serial.print("  SOS: "); Serial.println(data.sos ? "ACTIVE" : "OFF");
+        Serial.print("  GPS: "); 
+        if (data.latitude != 0) {
+            Serial.print(data.latitude, 6);
+            Serial.print(", ");
+            Serial.println(data.longitude, 6);
+        } else {
+            Serial.println("No Fix");
+        }
+        Serial.println("=================================");
+        
+        lastSend = now;
+    }
+    
+    // Delay kecil untuk stabilitas
+    delay(10);
 }
 ```
 
-### 2️⃣ **Setup Backend dengan AI & Weather**
+### 2️⃣ Setup Master Gateway (ESP32)
 
 ```bash
-cd ../backend
+# 1. Install ESP32 Board Package
+#   File -> Preferences -> Board Manager URLs
+#   Tambahkan: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+# 2. Install Libraries
+#   - LoRa by Sandeep Mistry
+#   - WiFiManager by tzapu
+#   - PubSubClient by Nick O'Leary
+#   - Adafruit SSD1306 by Adafruit
 
-# Install dependencies
-pip install -r requirements.txt
+# 3. Upload kode ke ESP32
+#   - Board: ESP32 Dev Module
+#   - Partition Scheme: No OTA (Large APP)
+#   - Port: (sesuaikan)
 ```
 
-**requirements.txt:**
-```
-Flask==2.3.2
-Flask-SQLAlchemy==3.0.5
-Flask-SocketIO==5.3.4
-pandas==2.0.3
-scikit-learn==1.3.0
-joblib==1.3.2
-requests==2.31.0
-APScheduler==3.10.4
-eventlet==0.33.3
-```
-
-**backend/config.py:**
-```python
-# Konfigurasi Database
-SQLALCHEMY_DATABASE_URI = 'sqlite:///forest_sentinel.db'
-
-# Weather API (OpenWeatherMap)
-WEATHER_API_KEY = "your_openweather_api_key_here"
-WEATHER_CITY = "Bogor"  # Ganti dengan lokasi Anda
-WEATHER_UPDATE_INTERVAL = 600  # 10 menit
-
-# AI Model Paths
-FIRE_MODEL_PATH = "models/fire_risk_model.pkl"
-ANOMALY_MODEL_PATH = "models/anomaly_detector.pkl"
-
-# Flask Settings
-SECRET_KEY = "your-secret-key-here"
-DEBUG = True
-HOST = "0.0.0.0"
-PORT = 5000
-```
-
-**backend/app.py:**
-```python
-from flask import Flask, render_template, request, jsonify
-from flask_socketio import SocketIO, emit
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-import json
-from config import Config
-from models import db, Reading, Weather, Prediction
-from ai_predictor import FireRiskPredictor
-from weather_fetcher import WeatherFetcher
-
-app = Flask(__name__)
-app.config.from_object(Config)
-db.init_app(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
-
-# Inisialisasi AI dan Weather
-predictor = FireRiskPredictor()
-weather_fetcher = WeatherFetcher(app)
-
-@app.route('/api/data', methods=['POST'])
-def receive_data():
-    """Menerima data sensor dari gateway"""
-    data = request.json
-    
-    # Simpan ke database
-    reading = Reading(
-        node_id=data['node_id'],
-        temperature=data['temperature'],
-        smoke_level=data['smoke_level'],
-        vibration=data['vibration'],
-        water_level=data['water_level'],
-        battery=data['battery']
-    )
-    db.session.add(reading)
-    db.session.commit()
-    
-    # Ambil weather terbaru
-    latest_weather = Weather.query.order_by(
-        Weather.timestamp.desc()).first()
-    
-    if latest_weather:
-        # Prediksi risiko
-        prediction = predictor.predict(
-            reading.__dict__, 
-            latest_weather.__dict__
-        )
-        
-        # Simpan prediksi
-        pred = Prediction(
-            node_id=data['node_id'],
-            weather_id=latest_weather.id,
-            fire_risk=prediction['fire_risk'],
-            fire_risk_category=prediction['fire_risk_category'],
-            anomaly_score=prediction['anomaly_score'],
-            anomaly_detected=prediction['anomaly_detected'],
-            recommendation=prediction['recommendation']
-        )
-        db.session.add(pred)
-        db.session.commit()
-        
-        # Broadcast via WebSocket
-        socketio.emit('new_prediction', {
-            'node_id': data['node_id'],
-            'fire_risk': prediction['fire_risk'],
-            'category': prediction['fire_risk_category'],
-            'anomaly': prediction['anomaly_detected']
-        })
-    
-    # Broadcast data sensor
-    socketio.emit('new_data', data)
-    
-    return jsonify({"status": "success"}), 200
-
-@app.route('/api/weather/latest')
-def get_latest_weather():
-    """Endpoint untuk mendapatkan weather terbaru"""
-    weather = Weather.query.order_by(
-        Weather.timestamp.desc()).first()
-    return jsonify({
-        'temperature': weather.temperature,
-        'humidity': weather.humidity,
-        'wind_speed': weather.wind_speed,
-        'rain_1h': weather.rain_1h,
-        'description': weather.description,
-        'timestamp': weather.timestamp
-    })
-
-@app.route('/api/predict/latest/<node_id>')
-def get_latest_prediction(node_id):
-    """Endpoint untuk prediksi terbaru suatu node"""
-    prediction = Prediction.query.filter_by(
-        node_id=node_id).order_by(
-        Prediction.timestamp.desc()).first()
-    return jsonify({
-        'fire_risk': prediction.fire_risk,
-        'category': prediction.fire_risk_category,
-        'anomaly_detected': prediction.anomaly_detected,
-        'recommendation': prediction.recommendation,
-        'timestamp': prediction.timestamp
-    })
-
-@app.route('/')
-def dashboard():
-    """Halaman utama dashboard"""
-    return render_template('dashboard.html')
-
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-        # Train model jika belum ada
-        # train_models()
-    
-    # Start weather fetcher
-    weather_fetcher.start()
-    
-    # Run server
-    socketio.run(app, host=Config.HOST, port=Config.PORT, debug=True)
-```
-
-### 3️⃣ **Training Model AI**
-
-```python
-# backend/train_models.py
-import pandas as pd
-import numpy as np
-from sklearn.ensemble import RandomForestClassifier, IsolationForest
-from sklearn.model_selection import train_test_split
-import joblib
-
-def generate_training_data(n_samples=1000):
-    """Generate synthetic training data"""
-    np.random.seed(42)
-    
-    data = {
-        'temperature': np.random.uniform(20, 45, n_samples),
-        'smoke_level': np.random.uniform(0, 500, n_samples),
-        'vibration': np.random.choice([0, 1], n_samples),
-        'water_level': np.random.uniform(0, 100, n_samples),
-        'weather_temp': np.random.uniform(20, 35, n_samples),
-        'humidity': np.random.uniform(40, 100, n_samples),
-        'wind_speed': np.random.uniform(0, 15, n_samples),
-        'rain_1h': np.random.uniform(0, 20, n_samples)
-    }
-    
-    df = pd.DataFrame(data)
-    
-    # Generate labels (1 = fire, 0 = no fire)
-    # Kondisi kebakaran: suhu tinggi + asap tinggi + angin kencang + kelembaban rendah
-    fire_condition = (
-        (df['temperature'] > 35) & 
-        (df['smoke_level'] > 200) & 
-        (df['wind_speed'] > 5) & 
-        (df['humidity'] < 60)
-    )
-    df['fire_label'] = fire_condition.astype(int)
-    
-    return df
-
-def train_models():
-    """Train and save AI models"""
-    print("Generating training data...")
-    df = generate_training_data(2000)
-    
-    # Features untuk Random Forest
-    feature_cols = [
-        'temperature', 'smoke_level', 'vibration', 'water_level',
-        'weather_temp', 'humidity', 'wind_speed', 'rain_1h'
-    ]
-    
-    X = df[feature_cols]
-    y = df['fire_label']
-    
-    # Train Random Forest
-    print("Training Random Forest...")
-    rf_model = RandomForestClassifier(
-        n_estimators=100,
-        max_depth=10,
-        random_state=42
-    )
-    rf_model.fit(X, y)
-    
-    # Train Isolation Forest (unsupervised)
-    print("Training Isolation Forest...")
-    if_model = IsolationForest(
-        contamination=0.1,
-        random_state=42
-    )
-    if_model.fit(X)
-    
-    # Save models
-    joblib.dump(rf_model, 'models/fire_risk_model.pkl')
-    joblib.dump(if_model, 'models/anomaly_detector.pkl')
-    
-    print("Models saved successfully!")
-    
-    # Evaluasi
-    accuracy = rf_model.score(X, y)
-    print(f"Random Forest Accuracy: {accuracy:.2%}")
-
-if __name__ == "__main__":
-    train_models()
-```
-
-### 4️⃣ **Setup Master Gateway**
-
-```bash
-cd ../master
-
-# Configure WiFi and backend
-nano include/config.h
-```
+**Kode Master ESP32 Lengkap:**
 
 ```cpp
-// config.h - Master Configuration
-#define LORA_FREQUENCY 915E6
-#define WIFI_SSID "YourWiFi"
-#define WIFI_PASSWORD "YourPassword"
-#define BACKEND_URL "http://192.168.1.100:5000/api/data"
-#define SD_CARD_ENABLED true
+#include <WiFi.h>
+#include <WiFiManager.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
+#include <SPI.h>
+#include <LoRa.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
 
-// Upload to ESP32
-pio run --target upload --environment esp32
+// ===== OLED CONFIGURATION =====
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+#define SCREEN_ADDRESS 0x3C
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-// Monitor
-pio device monitor
-```
+// ===== LORA PINS =====
+#define SS 5
+#define RST 14
+#define DIO0 2
 
-### 5️⃣ **Akses Dashboard**
+// ===== MQTT CONFIGURATION =====
+const char* MQTT_SERVER = "broker.hivemq.com";
+const int MQTT_PORT = 1883;
+const char* MQTT_TOPIC = "forest/data";
+const char* MQTT_TOPIC_SOS = "forest/sos";
 
-Buka browser: **http://localhost:5000**
+// ===== STRUCTURE (harus sama dengan Client) =====
+struct SensorPacket {
+    float temperature;
+    float humidity;
+    int gas;
+    int light;
+    int soil;
+    int vibration;
+    bool sos;
+    uint32_t nodeID;
+    float latitude;
+    float longitude;
+} __attribute__((packed));
 
-Dashboard akan menampilkan:
-- Data sensor real-time dari semua node
-- Prediksi risiko kebakaran (HIGH/MEDIUM/LOW)
-- Data cuaca terkini (suhu, kelembaban, angin, hujan)
-- Grafik historis suhu dan smoke level
-- Alert log dengan severity
-- Rekomendasi dari AI
+// ===== GLOBAL VARIABLES =====
+WiFiClient espClient;
+PubSubClient client(espClient);
+QueueHandle_t dataQueue;
+int packetCount = 0;
+unsigned long lastStatsTime = 0;
 
----
-
-## 📊 Future Development
-
-### 🚧 **Roadmap**
-
-```mermaid
-gantt
-    title Development Roadmap 2024-2025
-    dateFormat YYYY-MM
-    axisFormat %b %Y
+// ===== OLED UPDATE FUNCTION =====
+void updateOLED(String status, String ip, bool mqttConnected, int nodes) {
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
     
-    section v1.0 - Basic LoRa
-    Basic LoRa Communication :done, 2024-01, 90d
-    3 Sensors Integration :done, 2024-01, 90d
-    Deep Sleep Implementation :done, 2024-02, 60d
+    display.setCursor(0, 0);
+    display.println("FOREST SENTINEL");
+    display.println("----------------");
+    
+    display.print("Status: ");
+    display.println(status);
+    
+    display.print("IP: ");
+    display.println(ip.substring(0, 15));
+    
+    display.print("MQTT: ");
+    display.println(mqttConnected ? "CONNECTED" : "DISCONNECT");
+    
+    display.print("Nodes: ");
+    display.println(nodes);
+    
+    display.print("Pkts: ");
+    display.println(packetCount);
+    
+    display.display();
+}
 
-    section v1.5 - RTOS & Infrastructure
-    FreeRTOS Multi-tasking :active, 2024-04, 60d
-    Solar Charging :active, 2024-04, 90d
-    Web Dashboard :active, 2024-05, 60d
+// ===== MQTT CALLBACK =====
+void mqttCallback(char* topic, byte* payload, unsigned int length) {
+    Serial.print("[MQTT] Message arrived on topic: ");
+    Serial.println(topic);
+}
 
-    section v2.0 - AI & Weather
-    ML Fire Prediction : 2024-07, 90d
-    Weather API Integration : 2024-08, 60d
-    Anomaly Detection : 2024-09, 60d
+// ===== MQTT RECONNECT =====
+void reconnectMQTT() {
+    while (!client.connected()) {
+        String clientId = "ForestMaster-" + String(random(0xffff), HEX);
+        
+        if (client.connect(clientId.c_str())) {
+            Serial.println("[MQTT] Connected!");
+            client.subscribe("forest/command");
+            updateOLED("Running", WiFi.localIP().toString(), true, packetCount);
+        } else {
+            Serial.print("[MQTT] Failed, rc=");
+            Serial.print(client.state());
+            Serial.println(" retrying in 5s");
+            updateOLED("MQTT Fail", WiFi.localIP().toString(), false, packetCount);
+            delay(5000);
+        }
+    }
+}
 
-    section v2.5 - Network
-    LoRaWAN Gateway : 2024-10, 90d
-    Mesh Networking : 2024-11, 90d
+// ===== TASK LORA (Core 0 - Priority 2) =====
+void taskLoRa(void *pvParameters) {
+    SensorPacket receivedData;
+    
+    while(1) {
+        int packetSize = LoRa.parsePacket();
+        
+        if (packetSize == sizeof(SensorPacket)) {
+            LoRa.readBytes((uint8_t*)&receivedData, sizeof(receivedData));
+            
+            // Kirim ke queue
+            if (xQueueSend(dataQueue, &receivedData, 0) != pdTRUE) {
+                Serial.println("[WARN] Queue full!");
+            } else {
+                packetCount++;
+                Serial.print("[LoRa] Received from node ");
+                Serial.println(receivedData.nodeID);
+            }
+        }
+        
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}
 
-    section v3.0 - Edge AI
-    TensorFlow Lite on ESP32 : 2025-01, 90d
-    Real-time Predictions : 2025-02, 60d
+// ===== TASK MQTT (Core 1 - Priority 1) =====
+void taskMQTT(void *pvParameters) {
+    SensorPacket packet;
+    StaticJsonDocument<512> doc;
+    char buffer[512];
+    
+    while(1) {
+        if (xQueueReceive(dataQueue, &packet, portMAX_DELAY) == pdTRUE) {
+            if (client.connected()) {
+                // Buat JSON payload
+                doc.clear();
+                doc["node_id"] = packet.nodeID;
+                doc["temperature"] = packet.temperature;
+                doc["humidity"] = packet.humidity;
+                doc["gas"] = packet.gas;
+                doc["light"] = packet.light;
+                doc["soil"] = packet.soil;
+                doc["vibration"] = packet.vibration;
+                doc["sos"] = packet.sos;
+                doc["latitude"] = packet.latitude;
+                doc["longitude"] = packet.longitude;
+                doc["timestamp"] = millis();
+                
+                // Serialize JSON
+                size_t n = serializeJson(doc, buffer);
+                
+                // Pilih topic berdasarkan SOS
+                const char* topic = packet.sos ? MQTT_TOPIC_SOS : MQTT_TOPIC;
+                
+                // Publish ke MQTT
+                if (client.publish(topic, buffer, n)) {
+                    Serial.print("[MQTT] Published to ");
+                    Serial.println(topic);
+                } else {
+                    Serial.println("[MQTT] Publish failed!");
+                }
+            }
+        }
+    }
+}
 
-    section v3.5 - Mobility
-    Mobile App : 2025-04, 90d
-    Push Notifications : 2025-05, 60d
+void setup() {
+    Serial.begin(115200);
+    
+    // ===== INIT OLED =====
+    if(!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+        Serial.println(F("[ERROR] SSD1306 allocation failed"));
+    }
+    display.clearDisplay();
+    display.display();
+    
+    // ===== WIFI MANAGER =====
+    WiFiManager wm;
+    updateOLED("Config Portal", "192.168.4.1", false, 0);
+    
+    // AutoConnect dengan AP name "ForestSentinel_Master"
+    if (!wm.autoConnect("ForestSentinel_Master")) {
+        Serial.println("[ERROR] Failed to connect WiFi");
+        ESP.restart();
+    }
+    
+    String ipAddress = WiFi.localIP().toString();
+    Serial.print("[WiFi] Connected! IP: ");
+    Serial.println(ipAddress);
+    
+    // ===== MQTT SETUP =====
+    client.setServer(MQTT_SERVER, MQTT_PORT);
+    client.setCallback(mqttCallback);
+    
+    // ===== LORA SETUP =====
+    LoRa.setPins(SS, RST, DIO0);
+    if (!LoRa.begin(433E6)) {
+        Serial.println("[ERROR] LoRa init failed!");
+        updateOLED("LoRa Error", ipAddress, false, 0);
+        while(1);
+    }
+    
+    // Konfigurasi LoRa
+    LoRa.setSpreadingFactor(12);
+    LoRa.setSignalBandwidth(125E3);
+    LoRa.setCodingRate4(5);
+    
+    Serial.println("[LoRa] Ready on 433MHz");
+    
+    // ===== QUEUE & TASKS =====
+    dataQueue = xQueueCreate(50, sizeof(SensorPacket));
+    
+    xTaskCreatePinnedToCore(
+        taskLoRa, 
+        "LoRaTask", 
+        8192, 
+        NULL, 
+        2, 
+        NULL, 
+        0
+    );
+    
+    xTaskCreatePinnedToCore(
+        taskMQTT, 
+        "MQTTTask", 
+        8192, 
+        NULL, 
+        1, 
+        NULL, 
+        1
+    );
+    
+    updateOLED("Running", ipAddress, false, 0);
+    Serial.println("[SYSTEM] Ready!");
+}
+
+void loop() {
+    // Maintain MQTT connection
+    if (!client.connected()) {
+        reconnectMQTT();
+    }
+    client.loop();
+    
+    // Update OLED stats setiap 5 detik
+    if (millis() - lastStatsTime > 5000) {
+        updateOLED("Running", WiFi.localIP().toString(), client.connected(), packetCount);
+        lastStatsTime = millis();
+    }
+    
+    vTaskDelay(pdMS_TO_TICKS(100));
+}
 ```
 
-### 🔮 **Planned Features**
+### 3️⃣ Setup Dashboard
 
-| Priority | Feature | Description | Status |
-|----------|---------|-------------|--------|
-| 🔴 **High** | FreeRTOS Optimization | Task scheduling & queue management | In Progress |
-| 🔴 **High** | Random Forest Fire Prediction | 92% accuracy with weather data | In Progress |
-| 🔴 **High** | Weather API Integration | OpenWeatherMap for context | In Progress |
-| 🟡 **Medium** | LoRaWAN Gateway | Koneksi ke The Things Network | Planned |
-| 🟡 **Medium** | Isolation Forest Anomaly | Deteksi getaran abnormal | Planned |
-| 🟡 **Medium** | Mobile App | React Native for alerts | Planned |
-| 🟢 **Low** | TensorFlow Lite | Edge ML di ESP32 | Research |
-| 🟢 **Low** | Multi-hop Mesh | Perluas jangkauan | Future |
+Dashboard sudah di-host di GitHub Pages, tidak perlu deploy sendiri.
 
-### 📊 **Performance Metrics**
+**URL:** https://ficrammanifur.github.io/-Forest-Sentinel-Dashboard/
 
-| Parameter | Nilai | Keterangan |
-|-----------|-------|------------|
-| **Akurasi Prediksi Kebakaran** | 92% | Random Forest dengan 8 fitur |
-| **Latency Sensor → Queue** | < 5 ms | FreeRTOS queue management |
-| **Task Switching Time** | < 1 ms | FreeRTOS scheduler |
-| **Weather Update Interval** | 10 menit | APScheduler di backend |
-| **End-to-End Latency** | < 3 s | Sensor → Dashboard |
-| **Packet Loss Rate** | < 1% | LoRa SF12 reliable |
+Dashboard ini akan otomatis:
+- Connect ke MQTT Broker (HiveMQ)
+- Subscribe ke topic `forest/data` dan `forest/sos`
+- Render Google Maps dengan marker semua node
+- Tampilkan data sensor real-time
+- Integrasi dengan MiroFish AI (via API)
+
+### 4️⃣ Testing
+
+```bash
+# 1. Power on Client Node (Arduino Nano)
+#    - LED LoRa akan berkedip saat transmit
+#    - Serial monitor akan menampilkan data
+
+# 2. Power on Master Gateway (ESP32)
+#    - Cari WiFi "ForestSentinel_Master"
+#    - Connect dan masuk ke 192.168.4.1
+#    - Masukkan WiFi credentials rumah/kantor
+
+# 3. Buka Dashboard
+#    - https://ficrammanifur.github.io/-Forest-Sentinel-Dashboard/
+#    - Node akan muncul di Google Maps
+
+# 4. Test SOS
+#    - Tekan tombol SOS pada Client Node
+#    - Marker di dashboard akan berubah merah
+#    - Alert akan muncul di panel notifikasi
+```
 
 ---
 
 ## 📷 Project Preview
 
-### 🖥️ **Web Dashboard dengan AI Predictions**
+### Hardware Assembly
+
+<div align="center">
+<table>
+<tr>
+<td align="center">
+<img src="./static/image/Hardware_Solder.png" alt="Hardware Assembly" width="100%"/>
+<br/>
+<em>Client Node - Arduino Nano + LoRa + GPS + Solar</em>
+</td>
+</tr>
+</table>
+</div>
+
+### Dashboard Preview
+
+<div align="center">
+<table>
+<tr>
+<td align="center">
+<img src="./static/image/Dashboard_Preview.png" alt="Dashboard Preview" width="100%"/>
+<br/>
+<em>Forest Sentinel Dashboard - Google Maps Integration</em>
+</td>
+</tr>
+</table>
+</div>
+
+### Real-time Monitoring Features
 
 ```mermaid
-graph TD
-    subgraph Dashboard[Web Dashboard Interface]
-        Header["🌲 FOREST SENTINEL - INTELLIGENT MONITORING"]
-        
-        subgraph Stats[System Status]
-            S1["Total Nodes: 12"]
-            S2["Active: 10"]
-            S3["Alerts: 03"]
-            S4["Weather: 28°C, 82%"]
-        end
-        
-        subgraph Risk[AI Risk Assessment]
-            R1["🔥 FIRE RISK"]
-            R2["72% HIGH"]
-            R3["⚠️ Based on: Temp 32°C, Smoke 150ppm, Wind 12km/h"]
-            R4["Recommendation: Waspada! Kondisi berpotensi kebakaran"]
-        end
-        
-        subgraph Nodes[Node Status]
-            N1["Node 01: 🔥 78°C / 350ppm - HIGH RISK"]
-            N2["Node 02: 💧 45cm / Flood Warning"]
-            N3["Node 03: ✅ 24°C / Normal"]
-            N4["Node 04: 🌫️ 42°C / Smoke Detected"]
-        end
-        
-        subgraph Weather[Real-time Weather]
-            W1["Temperature: 28.5°C"]
-            W2["Humidity: 82%"]
-            W3["Wind: 3.6 m/s"]
-            W4["Rain (1h): 2.5 mm"]
-            W5["Condition: Light Rain"]
-        end
-        
-        subgraph Chart[24h Temperature Trend]
-            C1["35°C ┼──╔══╗────"]
-            C2["30°C ─╔═╝  ╚═╗──"]
-            C3["25°C ═╝      ╚═╗"]
-            C4["00:00    12:00    23:59"]
-        end
-        
-        subgraph Alerts[Recent Alerts]
-            A1["🚨 HIGH: Fire Risk 72% at Node 01 - 10:32"]
-            A2["⚠️ WARNING: Flood Risk at Node 02 - 10:30"]
-            A3["ℹ️ Weather Alert: Strong wind warning"]
-        end
+graph LR
+    subgraph DASH[Web Dashboard]
+        M[Google Maps<br>Node Tracking]
+        C[Real-time Charts<br>Temperature & Gas]
+        A[Alert Panel<br>SOS & Warnings]
+        P[MiroFish Prediction<br>Risk Score]
     end
+    
+    subgraph DATA[Data Flow]
+        N1[Node 101<br>GPS: -6.2, 106.8]
+        N2[Node 102<br>GPS: -6.3, 106.9]
+        N3[Node 103<br>GPS: -6.4, 107.0]
+    end
+    
+    N1 & N2 & N3 --> M
+    N1 & N2 & N3 --> C
+    N1 & N2 & N3 --> A
+    N1 & N2 & N3 --> P
 
-    Stats --> Risk
-    Risk --> Nodes
-    Weather --> Risk
-    Nodes --> Chart
-    Chart --> Alerts
-
-    style Risk fill:#ffb74d,stroke:#e65100
-    style Weather fill:#81d4fa,stroke:#01579b
+    style DASH fill:#e3f2fd,stroke:#1565c0
+    style M fill:#c8e6c9,stroke:#2e7d32
+    style P fill:#ffb74d,stroke:#e65100
 ```
 
-### 📱 **Mobile View dengan AI Notifications**
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues & Solutions
+
+| Problem | Possible Cause | Solution |
+|---------|---------------|----------|
+| **LoRa tidak konek** | Frekuensi mismatch | Pastikan Client dan Master sama-sama 433MHz |
+| | Antenna tidak terpasang | Pasang antenna helical atau monopole |
+| | Jarak terlalu jauh | Pindah closer atau naikkan SF ke 12 |
+| **GPS No Fix** | Outdoor visibility | Pindah ke area terbuka |
+| | Cold start | Tunggu 5-10 menit pertama kali |
+| | Antenna GPS | Pastikan antenna menghadap ke langit |
+| **ESP32 tidak connect WiFi** | Wrong credentials | Reset WiFi Manager (hold button 10s) |
+| | Signal weak | Pindah lebih dekat ke router |
+| **MQTT disconnected** | No internet | Cek koneksi WiFi ESP32 |
+| | Broker down | Cek status HiveMQ |
+| **Dashboard no data** | MQTT topic mismatch | Cek topic di ESP32 = "forest/data" |
+| | CORS issue | Dashboard sudah handle CORS |
+| **Battery cepat habis** | GPS always on | GPS hanya aktif 2s per cycle |
+| | LoRa power high | Kurangi TX power ke 17dBm |
+| | Deep sleep not working | Cek kode delay vs deep sleep |
+
+### Debug Commands
+
+```cpp
+// Serial Monitor Commands (ESP32)
+// Kirim via Serial Monitor dengan baud 115200
+
+"status"    -> Tampilkan status sistem (WiFi, MQTT, LoRa, Queue)
+"reset"     -> Restart ESP32
+"clear"     -> Reset packet counter
+"nodes"     -> Tampilkan semua node yang pernah terdeteksi
+
+// Contoh output:
+>>> status
+WiFi: Connected (192.168.1.100)
+MQTT: Connected (broker.hivemq.com)
+LoRa: Active (433MHz, SF12)
+Queue: 5/50 packets
+Total packets: 127
+Last node: 101
+```
+
+---
+
+## 📊 Future Development
+
+### Roadmap 2024-2025
 
 ```mermaid
-graph TD
-    subgraph Mobile[Mobile App Interface]
-        Header["🌲 FOREST SENTINEL"]
-        
-        Alert["🔴 HIGH FIRE RISK<br>Node 01 - 72%<br>10:32 AM"]
-        
-        subgraph AI_Summary[AI Summary]
-            A1["🔥 Fire Risk: HIGH (72%)"]
-            A2["🌊 Flood Risk: LOW (15%)"]
-            A3["⚠️ Anomaly: None"]
-            A4["🌤️ Weather: 28°C, 82%"]
-        end
-        
-        subgraph Node_List[Critical Nodes]
-            L1["01 🔥 78° 3.7V - HIGH"]
-            L2["02 💧 45cm 4.1V - FLOOD"]
-            L3["06 ⚠️ 25° 3.2V - LOW BAT"]
-        end
-        
-        Footer["📊 Charts<br>⚙️ Settings<br>🔔 Alerts"]
-    end
+gantt
+    title Forest Sentinel Roadmap
+    dateFormat YYYY-MM
+    axisFormat %b %Y
+    
+    section Phase 1 - Basic
+    Hardware Prototyping     :done, 2024-01, 60d
+    LoRa Communication       :done, 2024-02, 30d
+    Basic Dashboard          :done, 2024-03, 45d
 
-    Mobile --> Alert
-    Mobile --> AI_Summary
-    Mobile --> Node_List
+    section Phase 2 - Enhanced
+    GPS Integration          :active, 2024-04, 30d
+    Solar Power System       :active, 2024-04, 45d
+    MiroFish AI Integration  :active, 2024-05, 60d
+    Google Maps API          :active, 2024-05, 30d
+
+    section Phase 3 - Advanced
+    LoRa Mesh Networking     :2024-07, 90d
+    Mobile App (React Native) :2024-08, 60d
+    Telegram Bot Alerts      :2024-09, 30d
+    Historical Data Analytics :2024-10, 45d
+
+    section Phase 4 - Production
+    PCB Design & Fabrication :2024-11, 60d
+    Field Testing (10 nodes) :2024-12, 90d
+    Documentation & Training :2025-01, 60d
+    Public Launch            :2025-03, 30d
 ```
+
+### Planned Features
+
+| Priority | Feature | Description | Target |
+|----------|---------|-------------|--------|
+| 🔴 **High** | LoRa Mesh Networking | Multi-hop untuk jangkauan lebih luas | Q3 2024 |
+| 🔴 **High** | Mobile App | React Native untuk notifikasi push | Q3 2024 |
+| 🟡 **Medium** | Telegram Bot | Alert otomatis ke group Telegram | Q4 2024 |
+| 🟡 **Medium** | Historical Analytics | Trend analysis dan reporting | Q4 2024 |
+| 🟡 **Medium** | Multiple Gateways | Redundancy dan coverage area lebih luas | Q1 2025 |
+| 🟢 **Low** | Custom PCB | Miniaturisasi dan降低成本 | Q1 2025 |
+| 🟢 **Low** | LoRaWAN Gateway | Integrasi dengan The Things Network | Q2 2025 |
 
 ---
 
@@ -1181,10 +1204,26 @@ graph TD
 ```
 MIT License
 
-Copyright (c) 2026 Forest Sentinel Team
+Copyright (c) 2024-2025 Forest Sentinel Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files...
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 ```
 
 [![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)](LICENSE)
@@ -1199,11 +1238,11 @@ of this software and associated documentation files...
 
 | Role | Name | Contact |
 |------|------|---------|
-| **Project Lead** | Forest Sentinel Team | [@forest-sentinel](https://github.com) |
-| **Embedded Systems (RTOS)** | - | - |
-| **AI/ML Engineer** | - | - |
-| **Backend Developer** | - | - |
-| **UI/UX Designer** | - | - |
+| **Project Lead & Hardware Engineer** | Ficram Manifur | [@ficrammanifur](https://github.com/ficrammanifur) |
+| **AI/ML Engineer (MiroFish)** | - | - |
+| **Frontend Developer** | - | - |
+| **Backend & MQTT** | - | - |
+| **Field Tester** | - | - |
 
 </div>
 
@@ -1211,12 +1250,20 @@ of this software and associated documentation files...
 
 ## 🙏 Acknowledgments
 
-- **FreeRTOS Team** - Real-time kernel for microcontrollers
-- **LoRa Alliance** - Long-range communication standard
-- **Scikit-learn Community** - Machine learning library
-- **OpenWeatherMap** - Weather data API
+- **MiroFish AI Team** - Swarm intelligence engine for environmental prediction
+- **Google Maps Platform** - Real-time mapping and location services
+- **HiveMQ** - Free MQTT cloud broker
+- **Open-Meteo** - Free weather API
 - **Espressif** - ESP32 platform
-- **Flask Community** - Python web framework
+- **Arduino Community** - Libraries and support
+
+---
+
+## 📞 Contact & Support
+
+- **GitHub Issues:** [Report Bug](https://github.com/ficrammanifur/-Forest-Sentinel-Dashboard/issues)
+- **Email:** forest.sentinel@example.com
+- **Demo:** https://ficrammanifur.github.io/-Forest-Sentinel-Dashboard/
 
 ---
 
@@ -1224,18 +1271,16 @@ of this software and associated documentation files...
 
 ╔══════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                  ║
-║     🌲 FOREST SENTINEL LORA SYSTEM - Intelligent Environmental Monitoring        ║
-║                   with FreeRTOS, AI Prediction & Weather Integration             ║
+║     🌲 FOREST SENTINEL - Swarm Intelligence Monitoring System                    ║
+║                   Arduino Nano + ESP32 + LoRa + MiroFish AI                      ║
 ║                                                                                  ║
 ║     ⭐ Star us on GitHub! · 🐛 Report Bug · 📫 Request Feature                   ║
 ║                                                                                  ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝
 
 
-**Built with ❤️ for forest conservation | Version 2.0.0 | Last Updated: 7 Mar 2026**
+**Built with ❤️ for forest conservation and emergency response | Version 2.0.0 | Last Updated: 14 Apr 2026**
 
-<p><a href="#top">⬆ Back on Top</a></p>
+<p><a href="#top">⬆ Back to Top</a></p>
 
 </div>
-
----
